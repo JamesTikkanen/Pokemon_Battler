@@ -1,9 +1,11 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
+    public static ArrayList<Pokemon> pokedex = new ArrayList<>();
     public static void main(String[] args) {
 
         Path pokedexPath = Path.of("Pokedex.json");
