@@ -33,7 +33,7 @@ public class InputHelper {
                 }
                 return input;
             } catch (InputMismatchException e) {
-                System.out.println("* Incorrect, try again *");
+                System.out.println("* Invalid, try again *");
                 continue;
             }
         }
@@ -51,7 +51,7 @@ public class InputHelper {
                 }
                 return Type.valueOf(input);
             } catch (IllegalArgumentException e) {
-                System.out.println("* Incorrect, try again *");
+                System.out.println("* Invalid, try again *");
                 continue;
             }
         }

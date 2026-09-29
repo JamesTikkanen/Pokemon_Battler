@@ -15,6 +15,7 @@ public class Main {
             System.out.println("\n*NO FILE FOUND. SEED DATA LOADED.");
         }*/
         pokedex = PokeData.pokeDataSeed();
+
         while (true) {
             System.out.println("\n*******POKEMON*******\n*******BATTLER*******");
             System.out.println("[0] POKEMON BATTLE");
@@ -45,6 +46,7 @@ public class Main {
                     addPokemon();
                 }
                 case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till Attack.
+                    editPokemon(pokedex);
                 }
                 case 4 -> { //Kan söka efter en pokemon med ett namn
                 }
@@ -63,7 +65,7 @@ public class Main {
     }
 
     public static void addPokemon() {
-        System.out.println("-Add a Pokémon");
+        System.out.println("--Add a Pokémon--");
         String name = InputHelper.readString(scanner, "Write name: ");
         Type type = InputHelper.readType(scanner);
         int maxHp = InputHelper.readIntHp(scanner, "Write HP 1-200: ");
@@ -71,7 +73,7 @@ public class Main {
 
         Pokemon newPokemon = new Pokemon(name, type, maxHp, currentHp);
 
-        System.out.println("\n-Add an attack");
+        System.out.println("\n--Add an attack--");
         newPokemon.addAttack(addAttack());
         pokedex.add(newPokemon);
         System.out.println("* Added a new pokemon *");
@@ -84,6 +86,33 @@ public class Main {
         int accuracy = InputHelper.readIntDamAcc(scanner, "Write accuracy 1-100: ");
         Attack newAttack = new Attack(name, damage, accuracy, type);
         return newAttack;
+    }
+
+    public static void editPokemon(ArrayList<Pokemon> pokedex) {
+        System.out.println("\n--Edit a Pokémon--\n");
+        PokeData.showPokeData(pokedex);
+        System.out.println("\nChoose index of the Pokémon to edit");
+        while (true) {
+            int index = InputHelper.readInt(scanner, "Write choice: ");
+            if (index < 0 || index > pokedex.size()){
+                System.out.println("* Invalid index *");
+                continue;
+            }
+            Pokemon editPoke = pokedex.get(index);
+            System.out.println("Edit: Name | Type | HP | Attack\nPress 'Q' to exit");
+            String choice = InputHelper.readString(scanner, "Write choice: ").toUpperCase();
+            switch(choice){
+                case "NAME" ->{}
+                case "TYPE" ->{}
+                case "HP" ->{}
+                case "ATTACK" ->{}
+                case "Q" ->{
+                    System.out.println("Returning to start");
+                    return;
+                }
+                default -> System.out.println("* Invalid choice *");
+            }
+        }
     }
 }
 
