@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class PokeData {
 
-    public static ArrayList<Pokemon> pokeData() {
+    public static ArrayList<Pokemon> pokeDataSeed() {
         ArrayList<Pokemon> pokeDataSeed = new ArrayList<>();
 
         Pokemon p1 = new Pokemon("PIKACHU", Type.ELECTRIC, 100, 100);
@@ -34,6 +34,7 @@ public class PokeData {
         return pokeDataSeed;
     }
 
+        //Visar dom pokemons som finns i listan.
     public static void showPokeData(ArrayList<Pokemon> pokeData) {
         if (pokeData == null || pokeData.isEmpty()) {
             System.out.println("* Pokedex is empty *");

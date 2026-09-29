@@ -14,7 +14,7 @@ public class Main {
             //PokeData.seedData();
             System.out.println("\n*NO FILE FOUND. SEED DATA LOADED.");
         }*/
-
+        pokedex = PokeData.pokeDataSeed();
         while (true) {
             System.out.println("\n*******POKEMON*******\n*******BATTLER*******");
             System.out.println("[0] POKEMON BATTLE");
@@ -28,10 +28,10 @@ public class Main {
             System.out.println("[8] RESET TO SEED");
             System.out.println("[9] EXIT PROGRAM");
             int input = InputHelper.readInt(scanner, "[*] ENTER CHOICE: ");
-            if (input < 0 || input > 8) {
-                System.out.println("* Incorrect choice, only 0-8 *\n");
+            if (input < 0 || input > 9) {
+                System.out.println("* Incorrect choice, only 0-9 *\n");
                 continue;
-            } else if (input == 8) {
+            } else if (input == 9) {
                 System.out.println("CLOSING PROGRAM...");
                 break;
             }
@@ -42,10 +42,11 @@ public class Main {
                     PokeData.showPokeData(pokedex);
                 }
                 case 2 -> { //Lägger till pokemon + en attack till pokeList.
+                    addPokemon();
                 }
                 case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till Attack.
                 }
-                case 4 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till Attack.
+                case 4 -> { //Kan söka efter en pokemon med ett namn
                 }
                 case 5 -> { //Tar bort en pokemon från pokeList.
                 }
@@ -54,11 +55,36 @@ public class Main {
                 case 7 -> { //Laddar fram en JSON fil om det finns till pokeList
                 }
                 case 8 -> {//Återställer pokeList till seedData
-                    pokedex = PokeData.pokeData();
+                    pokedex = PokeData.pokeDataSeed();
                     System.out.println("* Pokédex restored to seed data *");
                 }
             }
         }
     }
+
+    public static void addPokemon() {
+        System.out.println("-Add a Pokémon");
+        String name = InputHelper.readString(scanner, "Write name: ");
+        Type type = InputHelper.readType(scanner);
+        int maxHp = InputHelper.readIntHp(scanner, "Write HP 1-200: ");
+        int currentHp = maxHp;
+
+        Pokemon newPokemon = new Pokemon(name, type, maxHp, currentHp);
+
+        System.out.println("\n-Add an attack");
+        newPokemon.addAttack(addAttack());
+        pokedex.add(newPokemon);
+        System.out.println("* Added a new pokemon *");
+    }
+
+    public static Attack addAttack() {
+        String name = InputHelper.readString(scanner, "Write name: ");
+        Type type = InputHelper.readType(scanner);
+        int damage = InputHelper.readIntDamAcc(scanner, "Write damage 1-100: ");
+        int accuracy = InputHelper.readIntDamAcc(scanner, "Write accuracy 1-100: ");
+        Attack newAttack = new Attack(name, damage, accuracy, type);
+        return newAttack;
+    }
 }
+
 

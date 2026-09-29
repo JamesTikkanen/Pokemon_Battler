@@ -39,6 +39,9 @@ public class Pokemon {
     }
 
     public int getMaxHp() {
+        if (maxHp < 1 || maxHp > 200) {
+            System.out.println("* Must be between 1-200 *");
+        }
         return maxHp;
     }
 
