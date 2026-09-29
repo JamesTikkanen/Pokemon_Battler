@@ -8,23 +8,25 @@ public class Pokemon {
     private ArrayList<Attack> attacks = new ArrayList<>();
 
     public Pokemon() {
-        this.attacks = new ArrayList<>();
     }
 
-    public Pokemon(String name, Type type, int maxHp, int currentHp, ArrayList<Attack> attacks) {
+    public Pokemon(String name, Type type, int maxHp, int currentHp) {
         this.name = name;
         this.type = type;
         this.maxHp = maxHp;
-        this.currentHp = maxHp;
-        this.attacks = attacks;
+        this.currentHp = currentHp;
     }
+
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        if (name == null || name.isBlank()) System.out.println("Name cant be empty");
+        if (name == null || name.isBlank()) {
+            System.out.println("* Name cant be empty *");
+            return;
+        }
         this.name = name;
     }
 
@@ -44,18 +46,37 @@ public class Pokemon {
         this.maxHp = maxHp;
     }
 
-    public ArrayList<Attack> getAttacks() {
+    public int getCurrentHp() {
+        return currentHp;
+    }
+
+    public void setCurrentHp(int currentHp) {
+        this.currentHp = maxHp;
+    }
+
+    public ArrayList<Attack> getAttack() {
         return attacks;
     }
 
     public void setAttacks(ArrayList<Attack> attacks) {
-        if (attacks.isEmpty()) System.out.println("No attacks exists");
+        if (attacks == null || attacks.isEmpty()) {
+            System.out.println("* No attacks exists *");
+            return;
+        } else if (attacks.size() > 4) {
+            System.out.println("* Can't have more than 4 attacks *");
+            return;
+        }
         this.attacks = attacks;
+    }
+
+    public void addAttack(Attack attack) {
+        this.attacks.add(attack);
     }
 
     @Override
     public String toString() {
         return name + " [" + type + "] " + currentHp + "/" + maxHp + ":HP";
     }
+
 }
 

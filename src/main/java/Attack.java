@@ -1,5 +1,3 @@
-import static java.lang.String.valueOf;
-
 public class Attack {
 
     private String name;
@@ -10,7 +8,7 @@ public class Attack {
     public Attack() {
     }
 
-    public Attack(String name, Type type, int damage, int accuracy) {
+    public Attack(String name, int damage, int accuracy, Type type) {
         this.name = name;
         this.type = type;
         this.damage = damage;
@@ -22,7 +20,10 @@ public class Attack {
     }
 
     public void setName(String name) {
-        if (name == null || name.isBlank()) System.out.println("Name can't be empty.");
+        if (name == null || name.isBlank()) {
+            System.out.println("* Name can't be empty *");
+            return;
+        }
         this.name = name;
     }
 
@@ -31,7 +32,7 @@ public class Attack {
     }
 
     public void setType(Type type) {
-            this.type = type;
+        this.type = type;
     }
 
     public int getDamage() {
@@ -39,7 +40,10 @@ public class Attack {
     }
 
     public void setDamage(int damage) {
-        if (damage < 1 || damage > 100) System.out.println("Damage must be between 1-100");
+        if (damage < 1 || damage > 100) {
+            System.out.println("* Damage must be between 1-100 *");
+            return;
+        }
         this.damage = damage;
     }
 
@@ -48,12 +52,15 @@ public class Attack {
     }
 
     public void setAccuracy(int accuracy) {
-        if (accuracy < 1 || accuracy > 100) System.out.println("Accuracy must be between 1-100");
+        if (accuracy < 1 || accuracy > 100) {
+            System.out.println("* Accuracy must be between 1-100 *");
+            return;
+        }
         this.accuracy = accuracy;
     }
 
     @Override
-    public String toString(){
-        return name + " ["+type+"] "+damage+":dmg "+ accuracy + ":acc";
+    public String toString() {
+        return name + " [" + type + "] " + damage + ":dmg " + accuracy + ":acc";
     }
 }
