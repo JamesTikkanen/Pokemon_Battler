@@ -1,9 +1,15 @@
+package data;
+
+import model.Attack;
+import model.Pokemon;
+import model.Type;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PokeData {
 
-    public static ArrayList<Pokemon> pokeDataSeed() {
+    public static final ArrayList<Pokemon> pokeDataSeed() {
         ArrayList<Pokemon> pokeDataSeed = new ArrayList<>();
 
         Pokemon p1 = new Pokemon("PIKACHU", Type.ELECTRIC, 100, 100);

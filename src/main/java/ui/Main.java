@@ -1,3 +1,11 @@
+package ui;
+
+import data.PokeData;
+import inputcheck.InputHelper;
+import model.Attack;
+import model.Pokemon;
+import model.Type;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,14 +19,15 @@ public class Main {
         if (Files.exists(pokedexPath)) {
             System.out.println();
         } else {
-            //PokeData.seedData();
+            //data.PokeData.seedData();
             System.out.println("\n*NO FILE FOUND. SEED DATA LOADED.");
         }*/
+
         pokedex = PokeData.pokeDataSeed();
 
         while (true) {
-            System.out.println("\n*******POKEMON*******\n*******BATTLER*******");
-            System.out.println("[0] POKEMON BATTLE");
+            System.out.println("\n---------------------\n-------POKÉDEX-------\n---------------------");
+            System.out.println("[0] POKEMON BATTLER");
             System.out.println("[1] SHOW POKEDEX");
             System.out.println("[2] ADD POKEMON");
             System.out.println("[3] EDIT POKEMON");
@@ -28,7 +37,7 @@ public class Main {
             System.out.println("[7] LOAD FILE");
             System.out.println("[8] RESET TO SEED");
             System.out.println("[9] EXIT PROGRAM");
-            int input = InputHelper.readInt(scanner, "[*] ENTER CHOICE: ");
+            int input = InputHelper.readInt(scanner, "Write choice: ");
             if (input < 0 || input > 9) {
                 System.out.println("* Incorrect choice, only 0-9 *\n");
                 continue;
@@ -37,7 +46,8 @@ public class Main {
                 break;
             }
             switch (input) {
-                case 0 -> {//Pokemon battler
+                case 0 -> {//model.Pokemon battler
+                    Battler.battleMenu();
                 }
                 case 1 -> { //Om pokeList är tom går till menyval annars visas pokeList
                     PokeData.showPokeData(pokedex);
@@ -45,7 +55,7 @@ public class Main {
                 case 2 -> { //Lägger till pokemon + en attack till pokeList.
                     addPokemon();
                 }
-                case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till Attack.
+                case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till model.Attack.
                     editPokemon(pokedex);
                 }
                 case 4 -> { //Kan söka efter en pokemon med ett namn
@@ -99,7 +109,7 @@ public class Main {
                 continue;
             }
             Pokemon editPoke = pokedex.get(index);
-            System.out.println("Edit: Name | Type | HP | Attack\nPress 'Q' to exit");
+            System.out.println("Edit: Name | model.Type | HP | model.Attack\nPress 'Q' to exit");
             String choice = InputHelper.readString(scanner, "Write choice: ").toUpperCase();
             switch(choice){
                 case "NAME" ->{}

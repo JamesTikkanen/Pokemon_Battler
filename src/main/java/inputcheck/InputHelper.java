@@ -1,3 +1,7 @@
+package inputcheck;
+
+import model.Type;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,24 +43,6 @@ public class InputHelper {
         }
     }
 
-    public static Type readType(Scanner scanner) {
-        while (true) {
-            System.out.println("[ Fire | Water | Grass | Electric | Normal ]");
-            System.out.print("Write type: ");
-            try {
-                String input = scanner.nextLine().toUpperCase().trim();
-                if (input == null || input.isBlank()) {
-                    System.out.println("* Can't leave empty *");
-                    continue;
-                }
-                return Type.valueOf(input);
-            } catch (IllegalArgumentException e) {
-                System.out.println("* Invalid, try again *");
-                continue;
-            }
-        }
-    }
-
     public static int readIntHp(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -77,6 +63,7 @@ public class InputHelper {
             }
         }
     }
+
 
     public static int readIntDamAcc(Scanner scanner, String prompt) {
         while (true) {
@@ -99,4 +86,21 @@ public class InputHelper {
         }
     }
 
+    public static Type readType(Scanner scanner) {
+        while (true) {
+            System.out.println("[ Fire | Water | Grass | Electric | Normal ]");
+            System.out.print("Write type: ");
+            try {
+                String input = scanner.nextLine().toUpperCase().trim();
+                if (input == null || input.isBlank()) {
+                    System.out.println("* Can't leave empty *");
+                    continue;
+                }
+                return Type.valueOf(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println("* Invalid, try again *");
+                continue;
+            }
+        }
+    }
 }
