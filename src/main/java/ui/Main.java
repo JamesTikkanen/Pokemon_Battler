@@ -47,7 +47,7 @@ public class Main {
             }
             switch (input) {
                 case 0 -> {//model.Pokemon battler
-                    Battler.battleMenu();
+                    BattleMenu.battleMenu();
                 }
                 case 1 -> { //Om pokeList är tom går till menyval annars visas pokeList
                     PokeData.showPokeData(pokedex);

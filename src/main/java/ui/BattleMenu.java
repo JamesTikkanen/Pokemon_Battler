@@ -4,7 +4,7 @@ import inputcheck.InputHelper;
 
 import static ui.Main.scanner;
 
-public class Battler {
+public class BattleMenu {
     public static void battleMenu() {
         System.out.println("\n--------POKÉMON--------\n--------BATTLER--------\n");
         System.out.println("[1] BATTLE WILD POKEMON");
