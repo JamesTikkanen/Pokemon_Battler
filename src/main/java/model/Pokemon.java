@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+
 public class Pokemon {
     private String name;
     private Type type;
@@ -41,14 +42,15 @@ public class Pokemon {
     }
 
     public int getMaxHp() {
-        if (maxHp < 1 || maxHp > 200) {
+        if (maxHp < 0 || maxHp > 200) {
             System.out.println("* Must be between 1-200 *");
         }
         return maxHp;
     }
 
-    public void setMaxHp(int maxHp) {
+    public int setMaxHp(int maxHp) {
         this.maxHp = maxHp;
+        return maxHp;
     }
 
     public int getCurrentHp() {

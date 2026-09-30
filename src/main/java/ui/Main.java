@@ -99,31 +99,95 @@ public class Main {
     }
 
     public static void editPokemon(ArrayList<Pokemon> pokedex) {
+        if (pokedex.isEmpty()) {
+            System.out.println("* Pokédex is empty *");
+            return;
+        }
         System.out.println("\n--Edit a Pokémon--\n");
         PokeData.showPokeData(pokedex);
         System.out.println("\nChoose index of the Pokémon to edit");
+        int index;
         while (true) {
-            int index = InputHelper.readInt(scanner, "Write choice: ");
-            if (index < 0 || index > pokedex.size()){
+            index = InputHelper.readInt(scanner, "Write choice: ");
+            if (index < 0 || index >= pokedex.size()) {
                 System.out.println("* Invalid index *");
                 continue;
             }
-            Pokemon editPoke = pokedex.get(index);
-            System.out.println("Edit: Name | model.Type | HP | model.Attack\nPress 'Q' to exit");
-            String choice = InputHelper.readString(scanner, "Write choice: ").toUpperCase();
-            switch(choice){
-                case "NAME" ->{}
-                case "TYPE" ->{}
-                case "HP" ->{}
-                case "ATTACK" ->{}
-                case "Q" ->{
-                    System.out.println("Returning to start");
+            break;
+        }
+        Pokemon editPoke = pokedex.get(index);
+        System.out.println("Edit: Name | model.Type | HP | model.Attack\nPress 'Q' to exit");
+        String choice = InputHelper.readString(scanner, "Write choice: ").toUpperCase();
+        switch (choice) {
+            case "NAME" -> {
+                editPoke.setName(InputHelper.readString(scanner, "Write new name: "));
+                System.out.println("Edit added to Pokémon");
+            }
+            case "TYPE" -> {
+                editPoke.setType(InputHelper.readType(scanner));
+                System.out.println("Edit added to Pokémon");
+            }
+            case "HP" -> {
+                int hp = InputHelper.readIntHp(scanner, "Write new HP 1-200: ");
+                editPoke.setMaxHp(hp);
+                editPoke.setCurrentHp(hp);
+                System.out.println("Edit added to Pokémon");
+            }
+            case "ATTACK" -> {
+                editAttack(editPoke);
+            }
+            case "Q" -> {
+                System.out.println("Returning to start");
+                return;
+            }
+            default -> System.out.println("* Invalid choice *");
+        }
+    }
+
+    public static void editAttack(Pokemon editPoke) {
+        System.out.println("[1] ADD ATTACK\n[2] REMOVE ATTACK\n[3] EXIT TO POKÉDEX");
+        int choice = InputHelper.readInt(scanner, "Write choice: ");
+        switch (choice) {
+            case 1 -> {
+                if (editPoke.getAttack().size() >= 4) {
+                    System.out.println("* 4 attacks already exists *");
+                    editAttack(editPoke);
+                }
+                editPoke.addAttack(addAttack());
+                System.out.println("Attack added");
+            }
+            case 2 -> {
+                System.out.println();
+                if (editPoke.getAttack().size() <= 1) {
+                    System.out.println("* Only 1 attack exists, can't delete * ");
                     return;
                 }
-                default -> System.out.println("* Invalid choice *");
+                int i = 0;
+                for (Attack a : editPoke.getAttack()) {
+                    System.out.println("Index[" + i + "] \n" + a);
+                    i++;
+                }
+                while (true) {
+                    int iRemove = InputHelper.readInt(scanner, "Write index: ");
+                    if (iRemove < 0 || iRemove >= editPoke.getAttack().size()) {
+                        System.out.println("* Invalid choice *");
+                        continue;
+                    }
+                    editPoke.getAttack().remove(iRemove);
+                    System.out.println("Attack removed");
+                    return;
+                }
+            }
+            case 3 -> {
+                break;
+            }
+            default -> {
+                System.out.println("* Invalid choice *");
+                editAttack(editPoke);
             }
         }
     }
 }
+
 
 

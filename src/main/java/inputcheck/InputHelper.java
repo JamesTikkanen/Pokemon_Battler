@@ -6,6 +6,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputHelper {
+    private static int maxHp = 200;
+    private static int minHp = 0;
+    private static int maxAtt = 100;
+    private static int minAtt = 1;
 
     public static int readInt(Scanner scanner, String prompt) {
         while (true) {
@@ -53,7 +57,7 @@ public class InputHelper {
             }
             try {
                 int in = Integer.parseInt(input);
-                if (in < 1 || in > 200) {
+                if (in < minHp || in > maxHp) {
                     System.out.println("* HP must be 1-200 *");
                     continue;
                 }
@@ -75,7 +79,7 @@ public class InputHelper {
             }
             try {
                 int in = Integer.parseInt(input);
-                if (in < 1 || in > 100) {
+                if (in < minAtt || in > maxAtt) {
                     System.out.println("* HP must be 1-100 *");
                     continue;
                 }

@@ -36,6 +36,7 @@ public class PokeData {
         p6.addAttack(new Attack("BODY SLAM", 85, 75, Type.NORMAL));
         p6.addAttack(new Attack("TACKLE", 45, 90, Type.NORMAL));
 
+
         pokeDataSeed.addAll(Arrays.asList(p1, p2, p3, p4, p5, p6));
         return pokeDataSeed;
     }
