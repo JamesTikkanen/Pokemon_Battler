@@ -62,7 +62,7 @@ public class Main {
                     searchPokemon(pokedex);
                 }
                 case 5 -> { //Tar bort en pokemon från pokeList.
-                    Utilities.removePokemon();
+                    removePokemon(pokedex);
                 }
                 case 6 -> { //Sparar pokeList till en JSON fil.
                 }

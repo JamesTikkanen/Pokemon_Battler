@@ -144,7 +144,17 @@ public class Utilities {
         }
         System.out.println("No Pokémon found with the name: " + search);
     }
-    public static void removePokmeon(ArrayList<Pokemon> pokedex){
+    public static void removePokemon(ArrayList<Pokemon> pokedex){
         showPokeData(pokedex);
+        while(true) {
+            int iRemove = InputHelper.readInt(scanner, "Write index of the Pokémon to remove: ");
+            if(iRemove < 0 || iRemove >= pokedex.size()){
+                System.out.println("* Invalid index *");
+                continue;
+            }
+            pokedex.remove(iRemove);
+            System.out.println("Pokemon removed from pokédex");
+            return;
+        }
     }
 }
