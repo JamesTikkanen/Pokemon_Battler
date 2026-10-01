@@ -4,14 +4,17 @@ import data.PokeData;
 import inputcheck.InputHelper;
 import model.Pokemon;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static Utilities.Utilities.*;
+import static data.PokeData.saveFile;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static ArrayList<Pokemon> pokedex = new ArrayList<>();
+    public static Path pokedexPath =Path.of("Pokedex.json");
 
     public static void main(String[] args) {
 
@@ -65,6 +68,7 @@ public class Main {
                     removePokemon(pokedex);
                 }
                 case 6 -> { //Sparar pokeList till en JSON fil.
+                    saveFile(pokedexPath, pokedex);
                 }
                 case 7 -> { //Laddar fram en JSON fil om det finns till pokeList
                 }

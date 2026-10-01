@@ -1,14 +1,19 @@
 package data;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Attack;
 import model.Pokemon;
 import model.Type;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import static ui.Main.pokedexPath;
 
 public class PokeData {
-
     public static final ArrayList<Pokemon> pokeDataSeed() {
         ArrayList<Pokemon> pokeDataSeed = new ArrayList<>();
 
@@ -53,6 +58,16 @@ public class PokeData {
             for (Attack a : poke.getAttack()) {
                 System.out.println("  - " + a);
             }
+        }
+    }
+
+    public static void saveFile(Path path, List<Pokemon> pokedex){
+        ObjectMapper mapper = new ObjectMapper();
+        try{
+            mapper.writerWithDefaultPrettyPrinter().writeValue(pokedexPath.toFile(), pokedex);
+            System.out.println("Pokédex saved to file");
+        } catch (IOException e){
+            System.out.println("Fel " + e.getMessage());
         }
     }
 }

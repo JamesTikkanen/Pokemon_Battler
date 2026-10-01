@@ -1,0 +1,97 @@
+[ {
+  "name" : "Pikachu",
+  "type" : "ELECTRIC",
+  "maxHp" : 100,
+  "currentHp" : 100,
+  "attack" : [ {
+    "name" : "Thunderbolt",
+    "type" : "ELECTRIC",
+    "damage" : 60,
+    "accuracy" : 80
+  }, {
+    "name" : "Quick attack",
+    "type" : "NORMAL",
+    "damage" : 40,
+    "accuracy" : 90
+  } ]
+}, {
+  "name" : "Charmander",
+  "type" : "FIRE",
+  "maxHp" : 95,
+  "currentHp" : 95,
+  "attack" : [ {
+    "name" : "Ember",
+    "type" : "FIRE",
+    "damage" : 60,
+    "accuracy" : 90
+  }, {
+    "name" : "Tail whip",
+    "type" : "NORMAL",
+    "damage" : 50,
+    "accuracy" : 85
+  } ]
+}, {
+  "name" : "Squirtle",
+  "type" : "WATER",
+  "maxHp" : 105,
+  "currentHp" : 105,
+  "attack" : [ {
+    "name" : "Water gun",
+    "type" : "WATER",
+    "damage" : 60,
+    "accuracy" : 90
+  }, {
+    "name" : "Tackle",
+    "type" : "NORMAL",
+    "damage" : 45,
+    "accuracy" : 90
+  } ]
+}, {
+  "name" : "Bulbasaur",
+  "type" : "GRASS",
+  "maxHp" : 100,
+  "currentHp" : 100,
+  "attack" : [ {
+    "name" : "Vine whip",
+    "type" : "GRASS",
+    "damage" : 65,
+    "accuracy" : 90
+  }, {
+    "name" : "Tackle",
+    "type" : "NORMAL",
+    "damage" : 45,
+    "accuracy" : 90
+  } ]
+}, {
+  "name" : "Eevee",
+  "type" : "NORMAL",
+  "maxHp" : 110,
+  "currentHp" : 110,
+  "attack" : [ {
+    "name" : "Tackle",
+    "type" : "NORMAL",
+    "damage" : 40,
+    "accuracy" : 90
+  }, {
+    "name" : "Qucik attack",
+    "type" : "NORMAL",
+    "damage" : 40,
+    "accuracy" : 90
+  } ]
+}, {
+  "name" : "Snorlax",
+  "type" : "NORMAL",
+  "maxHp" : 200,
+  "currentHp" : 200,
+  "attack" : [ {
+    "name" : "Body slam",
+    "type" : "NORMAL",
+    "damage" : 85,
+    "accuracy" : 75
+  }, {
+    "name" : "Tackle",
+    "type" : "NORMAL",
+    "damage" : 45,
+    "accuracy" : 90
+  } ]
+} ]
