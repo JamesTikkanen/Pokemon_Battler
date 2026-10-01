@@ -7,9 +7,13 @@ public enum Type {
     ELECTRIC("Electric")
     ,NORMAL("Normal");
 
-    private Type(String type){
+    private final String lable;
 
+    Type(String lable){
+        this.lable = lable;
     }
-
+    public String getLable(){
+        return lable;
+    }
 
 }

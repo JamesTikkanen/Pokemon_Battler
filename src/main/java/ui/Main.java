@@ -2,12 +2,12 @@ package ui;
 
 import data.PokeData;
 import inputcheck.InputHelper;
-import model.Attack;
 import model.Pokemon;
-import model.Type;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static Utilities.Utilities.*;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
@@ -59,8 +59,10 @@ public class Main {
                     editPokemon(pokedex);
                 }
                 case 4 -> { //Kan söka efter en pokemon med ett namn
+                    searchPokemon(pokedex);
                 }
                 case 5 -> { //Tar bort en pokemon från pokeList.
+                    Utilities.removePokemon();
                 }
                 case 6 -> { //Sparar pokeList till en JSON fil.
                 }
@@ -70,120 +72,6 @@ public class Main {
                     pokedex = PokeData.pokeDataSeed();
                     System.out.println("* Pokédex restored to seed data *");
                 }
-            }
-        }
-    }
-
-    public static void addPokemon() {
-        System.out.println("--Add a Pokémon--");
-        String name = InputHelper.readString(scanner, "Write name: ");
-        Type type = InputHelper.readType(scanner);
-        int maxHp = InputHelper.readIntHp(scanner, "Write HP 1-200: ");
-        int currentHp = maxHp;
-
-        Pokemon newPokemon = new Pokemon(name, type, maxHp, currentHp);
-
-        System.out.println("\n--Add an attack--");
-        newPokemon.addAttack(addAttack());
-        pokedex.add(newPokemon);
-        System.out.println("* Added a new pokemon *");
-    }
-
-    public static Attack addAttack() {
-        String name = InputHelper.readString(scanner, "Write name: ");
-        Type type = InputHelper.readType(scanner);
-        int damage = InputHelper.readIntDamAcc(scanner, "Write damage 1-100: ");
-        int accuracy = InputHelper.readIntDamAcc(scanner, "Write accuracy 1-100: ");
-        Attack newAttack = new Attack(name, damage, accuracy, type);
-        return newAttack;
-    }
-
-    public static void editPokemon(ArrayList<Pokemon> pokedex) {
-        if (pokedex.isEmpty()) {
-            System.out.println("* Pokédex is empty *");
-            return;
-        }
-        System.out.println("\n--Edit a Pokémon--\n");
-        PokeData.showPokeData(pokedex);
-        System.out.println("\nChoose index of the Pokémon to edit");
-        int index;
-        while (true) {
-            index = InputHelper.readInt(scanner, "Write choice: ");
-            if (index < 0 || index >= pokedex.size()) {
-                System.out.println("* Invalid index *");
-                continue;
-            }
-            break;
-        }
-        Pokemon editPoke = pokedex.get(index);
-        System.out.println("Edit: Name | model.Type | HP | model.Attack\nPress 'Q' to exit");
-        String choice = InputHelper.readString(scanner, "Write choice: ").toUpperCase();
-        switch (choice) {
-            case "NAME" -> {
-                editPoke.setName(InputHelper.readString(scanner, "Write new name: "));
-                System.out.println("Edit added to Pokémon");
-            }
-            case "TYPE" -> {
-                editPoke.setType(InputHelper.readType(scanner));
-                System.out.println("Edit added to Pokémon");
-            }
-            case "HP" -> {
-                int hp = InputHelper.readIntHp(scanner, "Write new HP 1-200: ");
-                editPoke.setMaxHp(hp);
-                editPoke.setCurrentHp(hp);
-                System.out.println("Edit added to Pokémon");
-            }
-            case "ATTACK" -> {
-                editAttack(editPoke);
-            }
-            case "Q" -> {
-                System.out.println("Returning to start");
-                return;
-            }
-            default -> System.out.println("* Invalid choice *");
-        }
-    }
-
-    public static void editAttack(Pokemon editPoke) {
-        System.out.println("[1] ADD ATTACK\n[2] REMOVE ATTACK\n[3] EXIT TO POKÉDEX");
-        int choice = InputHelper.readInt(scanner, "Write choice: ");
-        switch (choice) {
-            case 1 -> {
-                if (editPoke.getAttack().size() >= 4) {
-                    System.out.println("* 4 attacks already exists *");
-                    editAttack(editPoke);
-                }
-                editPoke.addAttack(addAttack());
-                System.out.println("Attack added");
-            }
-            case 2 -> {
-                System.out.println();
-                if (editPoke.getAttack().size() <= 1) {
-                    System.out.println("* Only 1 attack exists, can't delete * ");
-                    return;
-                }
-                int i = 0;
-                for (Attack a : editPoke.getAttack()) {
-                    System.out.println("Index[" + i + "] \n" + a);
-                    i++;
-                }
-                while (true) {
-                    int iRemove = InputHelper.readInt(scanner, "Write index: ");
-                    if (iRemove < 0 || iRemove >= editPoke.getAttack().size()) {
-                        System.out.println("* Invalid choice *");
-                        continue;
-                    }
-                    editPoke.getAttack().remove(iRemove);
-                    System.out.println("Attack removed");
-                    return;
-                }
-            }
-            case 3 -> {
-                break;
-            }
-            default -> {
-                System.out.println("* Invalid choice *");
-                editAttack(editPoke);
             }
         }
     }
