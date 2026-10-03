@@ -6,6 +6,7 @@ import model.Pokemon;
 import model.Type;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +47,7 @@ public class PokeData {
         return pokeDataSeed;
     }
 
-        //Visar dom pokemons som finns i listan.
+    //Visar dom pokemons som finns i listan.
     public static void showPokeData(ArrayList<Pokemon> pokeData) {
         if (pokeData == null || pokeData.isEmpty()) {
             System.out.println("* Pokedex is empty *");
@@ -61,13 +62,29 @@ public class PokeData {
         }
     }
 
-    public static void saveFile(Path path, List<Pokemon> pokedex){
+    public static void saveFile(Path path, List<Pokemon> pokedex) {
         ObjectMapper mapper = new ObjectMapper();
-        try{
+        try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(pokedexPath.toFile(), pokedex);
             System.out.println("Pokédex saved to file");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Fel " + e.getMessage());
+        }
+    }
+
+    public static List<Pokemon> loadFile(Path pokedexPath) {
+        ObjectMapper mapper = new ObjectMapper();
+        if (!Files.exists(pokedexPath)) {
+            System.out.println("* No file found *");
+            return new ArrayList<>();
+        }
+        try {
+            Pokemon[] list = mapper.readValue(pokedexPath.toFile(), Pokemon[].class);
+            System.out.println("File loaded successfully");
+            return new ArrayList<>(List.of(list));
+        } catch (IOException e) {
+            System.out.println("*NOT POSSIBLE TO LOAD\n" + e.getMessage());
+            return new ArrayList<>();
         }
     }
 }

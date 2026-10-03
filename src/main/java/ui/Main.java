@@ -4,29 +4,29 @@ import data.PokeData;
 import inputcheck.InputHelper;
 import model.Pokemon;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static Utilities.Utilities.*;
-import static data.PokeData.saveFile;
+import static data.PokeData.*;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static ArrayList<Pokemon> pokedex = new ArrayList<>();
-    public static Path pokedexPath =Path.of("Pokedex.json");
+    public static Path pokedexPath = Path.of("Pokedex.json");
 
     public static void main(String[] args) {
 
-        /*Path pokedexPath = Path.of("Pokedex.json");
-        if (Files.exists(pokedexPath)) {
+        Path pokedexPath = Path.of("Pokedex.json");
+        if (Files.exists(pokedexPath)){
             System.out.println();
+            pokedex = new ArrayList<>(loadFile(pokedexPath));
         } else {
-            //data.PokeData.seedData();
-            System.out.println("\n*NO FILE FOUND. SEED DATA LOADED.");
-        }*/
-
-        pokedex = PokeData.pokeDataSeed();
+            pokedex = pokeDataSeed();
+            System.out.println("* No file found, seed data loaded *");
+        }
 
         while (true) {
             System.out.println("\n---------------------\n-------POKÉDEX-------\n---------------------");
@@ -71,9 +71,10 @@ public class Main {
                     saveFile(pokedexPath, pokedex);
                 }
                 case 7 -> { //Laddar fram en JSON fil om det finns till pokeList
+                    loadFile(pokedexPath);
                 }
                 case 8 -> {//Återställer pokeList till seedData
-                    pokedex = PokeData.pokeDataSeed();
+                    pokedex = pokeDataSeed();
                     System.out.println("* Pokédex restored to seed data *");
                 }
             }
