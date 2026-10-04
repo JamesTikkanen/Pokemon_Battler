@@ -49,16 +49,16 @@ public class Main {
                 break;
             }
             switch (input) {
-                case 0 -> {//model.Pokemon battler
+                case 0 -> {//meny val för pokemon battler
                     BattleMenu.battleMenu();
                 }
                 case 1 -> { //Om pokeList är tom går till menyval annars visas pokeList
-                    PokeData.showPokeData(pokedex);
+                    showPokeData(pokedex);
                 }
                 case 2 -> { //Lägger till pokemon + en attack till pokeList.
                     addPokemon();
                 }
-                case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till model.Attack.
+                case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till attack.
                     editPokemon(pokedex);
                 }
                 case 4 -> { //Kan söka efter en pokemon med ett namn
@@ -70,10 +70,10 @@ public class Main {
                 case 6 -> { //Sparar pokeList till en JSON fil.
                     saveFile(pokedexPath, pokedex);
                 }
-                case 7 -> { //Laddar fram en JSON fil om det finns till pokeList
+                case 7 -> { //Laddar fram en JSON fil om det finns till pokedex
                     loadFile(pokedexPath);
                 }
-                case 8 -> {//Återställer pokeList till seedData
+                case 8 -> {//Återställer pokeList till seed data
                     pokedex = pokeDataSeed();
                     System.out.println("* Pokédex restored to seed data *");
                 }
