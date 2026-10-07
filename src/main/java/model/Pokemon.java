@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-
 public class Pokemon {
     private String name;
     private Type type;
@@ -72,6 +71,8 @@ public class Pokemon {
         } else if (attacks.size() > 4) {
             System.out.println("* Can't have more than 4 attacks *");
             return;
+        } else if (attacks.size() < 1) {
+            System.out.println("* Can't be less than 1 attack *");
         }
         this.attacks = attacks;
     }
@@ -85,5 +86,9 @@ public class Pokemon {
         return name + " [" + type + "] " + currentHp + "/" + maxHp + ":HP";
     }
 
+    public void getDamage(int getCurrentHP, int getDamage){
+
+
+    }
 }
 

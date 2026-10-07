@@ -1,4 +1,4 @@
-package data;
+package repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Attack;
@@ -45,21 +45,6 @@ public class PokeData {
 
         pokeDataSeed.addAll(Arrays.asList(p1, p2, p3, p4, p5, p6));
         return pokeDataSeed;
-    }
-
-    //Visar dom pokemons som finns i listan.
-    public static void showPokeData(ArrayList<Pokemon> pokeData) {
-        if (pokeData == null || pokeData.isEmpty()) {
-            System.out.println("* Pokedex is empty *");
-            return;
-        }
-        for (int i = 0; i < pokeData.size(); i++) {
-            Pokemon poke = pokeData.get(i);
-            System.out.println("\nINDEX [" + i + "] " + poke);
-            for (Attack a : poke.getAttack()) {
-                System.out.println("  - " + a);
-            }
-        }
     }
 
     public static void saveFile(Path path, List<Pokemon> pokedex) {
