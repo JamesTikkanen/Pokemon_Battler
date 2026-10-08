@@ -2,8 +2,10 @@ package ui;
 
 import inputcheck.InputHelper;
 import model.Type;
+import utilities.BattleEngine;
 
 import static ui.Main.scanner;
+import static utilities.BattleEngine.wildBattle;
 
 public class BattleMenu {
     public static void battleMenu() {
@@ -21,7 +23,7 @@ public class BattleMenu {
             }
             switch (choice) {
                 case 1 -> {//Slås mot en slumpvald vild pokemon
-
+                    wildBattle();
                 }
                 case 2 -> { //Slås mot en pokemon i pokedex
 

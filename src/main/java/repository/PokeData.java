@@ -73,7 +73,7 @@ public class PokeData {
         }
     }
 
-    public static final ArrayList<Pokemon> wildPokemon(){
+    public static final ArrayList<Pokemon> wildPokeData(){
         ArrayList<Pokemon> wildPokeList = new ArrayList<>();
         Pokemon rattata = new Pokemon("Rattata",Type.NORMAL,130,130);
         rattata.addAttack(new Attack("Bite",45,80,Type.NORMAL));
