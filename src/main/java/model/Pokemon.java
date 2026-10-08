@@ -14,7 +14,7 @@ public class Pokemon {
     public Pokemon(String name, Type type, int maxHp, int currentHp) {
         if (name == null || name.isEmpty()) {
             System.out.println("* Name can't be empty *");
-        } else if (maxHp<=0){
+        } else if (maxHp <= 0) {
             System.out.println("* HP can't be less than 0 *");
         }
         this.name = name;
@@ -24,7 +24,7 @@ public class Pokemon {
         totalCreated++;
     }
 
-    public static int getTotalCreated(){
+    public static int getTotalCreated() {
         return totalCreated;
     }
 
@@ -119,6 +119,13 @@ public class Pokemon {
 
     public Boolean isFainted() {
         return this.currentHp == 0;
+    }
+
+    public void attack(Pokemon target, Attack attack) {
+        System.out.println(this.name + " uses " + attack.getName() + " [" + attack.getDamage() + " dmg] on " + target.getName());
+        int oldHp = target.getCurrentHp();
+        target.takeDamage(attack.getDamage());
+        System.out.println(target.getName() + ": " + oldHp + " hp -> " + target.getCurrentHp() + " hp");
     }
 
 }
