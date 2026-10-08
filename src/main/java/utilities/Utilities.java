@@ -94,7 +94,8 @@ public class Utilities {
             return;
         }
     }
-    public static void pokeBattleStats(){
+    public static void pokeStats(){
+
         //hashmap för vinster och förluster per pokemon i pokedex
     }
 }

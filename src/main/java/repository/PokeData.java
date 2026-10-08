@@ -18,32 +18,32 @@ public class PokeData {
     public static final ArrayList<Pokemon> pokeDataSeed() {
         ArrayList<Pokemon> pokeDataSeed = new ArrayList<>();
 
-        Pokemon p1 = new Pokemon("Pikachu", Type.ELECTRIC, 140, 140);
-        p1.addAttack(new Attack("Thunderbolt", 60, 80, Type.ELECTRIC));
-        p1.addAttack(new Attack("Quick attack", 40, 90, Type.NORMAL));
+        Pokemon pikachu = new Pokemon("Pikachu", Type.ELECTRIC, 140, 140);
+        pikachu.addAttack(new Attack("Thunderbolt", 60, 80, Type.ELECTRIC));
+        pikachu.addAttack(new Attack("Quick attack", 40, 90, Type.NORMAL));
 
-        Pokemon p2 = new Pokemon("Charmander", Type.FIRE, 140, 140);
-        p2.addAttack(new Attack("Ember", 60, 90, Type.FIRE));
-        p2.addAttack(new Attack("Tail whip", 50, 85, Type.NORMAL));
+        Pokemon charmander = new Pokemon("Charmander", Type.FIRE, 140, 140);
+        charmander.addAttack(new Attack("Ember", 60, 90, Type.FIRE));
+        charmander.addAttack(new Attack("Tail whip", 50, 85, Type.NORMAL));
 
-        Pokemon p3 = new Pokemon("Squirtle", Type.WATER, 140, 140);
-        p3.addAttack(new Attack("Water gun", 60, 90, Type.WATER));
-        p3.addAttack(new Attack("Tackle", 45, 90, Type.NORMAL));
+        Pokemon squirtle = new Pokemon("Squirtle", Type.WATER, 140, 140);
+        squirtle.addAttack(new Attack("Water gun", 60, 90, Type.WATER));
+        squirtle.addAttack(new Attack("Tackle", 45, 90, Type.NORMAL));
 
-        Pokemon p4 = new Pokemon("Bulbasaur", Type.GRASS, 140, 140);
-        p4.addAttack(new Attack("Vine whip", 65, 90, Type.GRASS));
-        p4.addAttack(new Attack("Tackle", 45, 90, Type.NORMAL));
+        Pokemon bulbasaur = new Pokemon("Bulbasaur", Type.GRASS, 140, 140);
+        bulbasaur.addAttack(new Attack("Vine whip", 65, 90, Type.GRASS));
+        bulbasaur.addAttack(new Attack("Tackle", 45, 90, Type.NORMAL));
 
-        Pokemon p5 = new Pokemon("Eevee", Type.NORMAL, 150, 150);
-        p5.addAttack(new Attack("Tackle", 40, 90, Type.NORMAL));
-        p5.addAttack(new Attack("Qucik attack", 40, 90, Type.NORMAL));
+        Pokemon eevee = new Pokemon("Eevee", Type.NORMAL, 150, 150);
+        eevee.addAttack(new Attack("Tackle", 40, 90, Type.NORMAL));
+        eevee.addAttack(new Attack("Qucik attack", 40, 90, Type.NORMAL));
 
-        Pokemon p6 = new Pokemon("Snorlax", Type.NORMAL, 200, 200);
-        p6.addAttack(new Attack("Body slam", 85, 75, Type.NORMAL));
-        p6.addAttack(new Attack("Tackle", 45, 90, Type.NORMAL));
+        Pokemon snorlax = new Pokemon("Snorlax", Type.NORMAL, 200, 200);
+        snorlax.addAttack(new Attack("Body slam", 85, 75, Type.NORMAL));
+        snorlax.addAttack(new Attack("Tackle", 45, 90, Type.NORMAL));
 
 
-        pokeDataSeed.addAll(Arrays.asList(p1, p2, p3, p4, p5, p6));
+        pokeDataSeed.addAll(Arrays.asList(pikachu, charmander, squirtle, bulbasaur, eevee, snorlax));
         return pokeDataSeed;
     }
 
@@ -75,27 +75,27 @@ public class PokeData {
 
     public static final ArrayList<Pokemon> wildPokemon(){
         ArrayList<Pokemon> wildPokeList = new ArrayList<>();
-        Pokemon w1 = new Pokemon("Rattata",Type.NORMAL,130,130);
-        w1.addAttack(new Attack("Bite",45,80,Type.NORMAL));
-        w1.addAttack(new Attack("Tail whip",35,80,Type.NORMAL));
+        Pokemon rattata = new Pokemon("Rattata",Type.NORMAL,130,130);
+        rattata.addAttack(new Attack("Bite",45,80,Type.NORMAL));
+        rattata.addAttack(new Attack("Tail whip",35,80,Type.NORMAL));
 
-        Pokemon w2 = new Pokemon("Wulpix",Type.FIRE,140,140);
-        w2.addAttack(new Attack("Fire burst",60,75,Type.FIRE));
-        w2.addAttack(new Attack("Slash",45,85,Type.NORMAL));
+        Pokemon wulpix = new Pokemon("Wulpix",Type.FIRE,140,140);
+        wulpix.addAttack(new Attack("Fire burst",60,75,Type.FIRE));
+        wulpix.addAttack(new Attack("Slash",45,85,Type.NORMAL));
 
-        Pokemon w3 = new Pokemon("Oddish",Type.GRASS,130,130);
-        w3.addAttack(new Attack("Vine whip",50,75,Type.GRASS));
-        w3.addAttack(new Attack("Slam",40,80,Type.NORMAL));
+        Pokemon oddish = new Pokemon("Oddish",Type.GRASS,130,130);
+        oddish.addAttack(new Attack("Vine whip",50,75,Type.GRASS));
+        oddish.addAttack(new Attack("Slam",40,80,Type.NORMAL));
 
-        Pokemon w4 = new Pokemon("Psyduck",Type.WATER,140,140);
-        w4.addAttack(new Attack("Water beam",50,80,Type.WATER));
-        w4.addAttack(new Attack("Bite",40,80,Type.NORMAL));
+        Pokemon psyduck = new Pokemon("Psyduck",Type.WATER,140,140);
+        psyduck.addAttack(new Attack("Water beam",50,80,Type.WATER));
+        psyduck.addAttack(new Attack("Bite",40,80,Type.NORMAL));
 
-        Pokemon w5 = new Pokemon("ElectaBuzz",Type.NORMAL,160,160);
-        w5.addAttack(new Attack("Thunder strike",60,85,Type.ELECTRIC));
-        w5.addAttack(new Attack("Slash",40,90,Type.NORMAL));
+        Pokemon electabuzz = new Pokemon("Electabuzz",Type.NORMAL,160,160);
+        electabuzz.addAttack(new Attack("Thunder strike",60,85,Type.ELECTRIC));
+        electabuzz.addAttack(new Attack("Slash",40,90,Type.NORMAL));
 
-        wildPokeList.addAll(Arrays.asList(w1,w2,w3,w4,w5));
+        wildPokeList.addAll(Arrays.asList(rattata,wulpix,oddish,psyduck,electabuzz));
         return wildPokeList;
     }
 }

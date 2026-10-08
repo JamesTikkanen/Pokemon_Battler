@@ -2,11 +2,13 @@ package ui;
 
 import inputcheck.InputHelper;
 import model.Pokemon;
+import model.Type;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 import static utilities.Utilities.*;
 import static repository.PokeData.*;
@@ -70,7 +72,7 @@ public class Main {
                     saveFile(pokedexPath, pokedex);
                 }
                 case 7 -> { //Laddar fram en JSON fil om det finns till pokedex
-                    loadFile(pokedexPath);
+                    pokedex = new ArrayList<>(loadFile(pokedexPath));
                 }
                 case 8 -> {//Återställer pokeList till seed data
                     pokedex = pokeDataSeed();

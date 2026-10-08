@@ -1,11 +1,13 @@
 package ui;
 
 import inputcheck.InputHelper;
+import model.Type;
 
 import static ui.Main.scanner;
 
 public class BattleMenu {
     public static void battleMenu() {
+
         System.out.println("\n--------POKÉMON--------\n--------BATTLER--------\n");
         System.out.println("[1] BATTLE WILD POKEMON");
         System.out.println("[2] BATTLE POKÉDEX");
