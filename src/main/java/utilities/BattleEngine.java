@@ -24,8 +24,9 @@ public class BattleEngine {
     }
     public static void pokedexBattle(){
         Pokemon player = choosePokemon();
-        System.out.println("\n---Choose enemy--- ");
+        System.out.println("\n------Choose Enemy------ ");
         Pokemon enemy = choosePokemon();
+        battle(player,enemy);
     }
 
     private static Pokemon choosePokemon() {
