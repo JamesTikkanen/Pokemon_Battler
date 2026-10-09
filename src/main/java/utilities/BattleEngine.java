@@ -65,11 +65,8 @@ public class BattleEngine {
             return player.getAttack().get(attackChoice);
         }
     }
+
     public static Pokemon coinToss(Pokemon player, Pokemon enemy){
-        int coin = random.nextInt(0,1);
-        switch(coin){
-            case 0 -> {return player;}
-            case 1 -> {return enemy;}
-        } return null;
+        return random.nextInt(2) == 0 ? player : enemy;
     }
 }

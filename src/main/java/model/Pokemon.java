@@ -12,10 +12,10 @@ public class Pokemon {
     private ArrayList<Attack> attacks = new ArrayList<>();
 
     public Pokemon(String name, Type type, int maxHp, int currentHp) {
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.isBlank()) {
             System.out.println("* Name can't be empty *");
-        } else if (maxHp <= 0) {
-            System.out.println("* HP can't be less than 0 *");
+        } else if (maxHp <= 0 || maxHp > 200) {
+            System.out.println("* HP can only be 1-200 *");
         }
         this.name = name;
         this.type = type;
@@ -31,22 +31,10 @@ public class Pokemon {
     public String getName() {
         return name;
     }
-    /*
-    public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            System.out.println("* Name cant be empty *");
-            return;
-        }
-        this.name = name;
-    }*/
 
     public Type getType() {
         return type;
     }
-    /*
-    public void setType(Type type) {
-        this.type = type;
-    }*/
 
     public int getMaxHp() {
         if (maxHp < 0 || maxHp > 200) {
@@ -54,11 +42,6 @@ public class Pokemon {
         }
         return maxHp;
     }
-/*
-    public int setMaxHp(int maxHp) {
-        this.maxHp = maxHp;
-        return maxHp;
-    }*/
 
     public int getCurrentHp() {
         return currentHp;
@@ -74,7 +57,7 @@ public class Pokemon {
     public ArrayList<Attack> getAttack() {
         return attacks;
     }
-
+    /*
     public void setAttack(ArrayList<Attack> attacks) {
         if (attacks == null || attacks.isEmpty()) {
             System.out.println("* No attacks exists *");
@@ -86,7 +69,7 @@ public class Pokemon {
             System.out.println("* Can't be less than 1 attack *");
         }
         this.attacks = attacks;
-    }
+    }*/
 
     public void addAttack(Attack attack) {
         if (attacks.size() >= 4) {
@@ -94,11 +77,6 @@ public class Pokemon {
             return;
         }
         this.attacks.add(attack);
-    }
-
-    @Override
-    public String toString() {
-        return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":HP";
     }
 
     public void takeDamage(int amount) {
@@ -120,13 +98,17 @@ public class Pokemon {
     public Boolean isFainted() {
         return this.currentHp == 0;
     }
-
+    /*
     public void attack(Pokemon target, Attack attack) {
-        System.out.println(this.name + " uses " + attack.getName() + " [" + attack.getDamage() + " dmg] on " + target.getName());
+        System.out.println(this.name + " uses " + attack.getName() + " [" + DamageAttack.getDamage() + " dmg] on " + target.getName());
         int oldHp = target.getCurrentHp();
         target.takeDamage(attack.getDamage());
         System.out.println(target.getName() + ": " + oldHp + " hp -> " + target.getCurrentHp() + " hp");
-    }
+    }*/
 
+    @Override
+    public String toString() {
+        return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":HP";
+    }
 }
 

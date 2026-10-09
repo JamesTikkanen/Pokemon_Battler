@@ -2,6 +2,7 @@ package utilities;
 
 import inputcheck.InputHelper;
 import model.Attack;
+import model.DamageAttack;
 import model.Pokemon;
 import model.Type;
 
@@ -26,7 +27,7 @@ public class Utilities {
             }
         }
     }
-
+    /*
     public static void addPokemon() {
         System.out.println("\n---Add a Pokémon.--");
         String name = InputHelper.readString(scanner, "Write Pokémon name: ");
@@ -40,15 +41,14 @@ public class Utilities {
         newPokemon.addAttack(addAttack());
         pokedex.add(newPokemon);
         System.out.println("* Added a new pokemon *");
-    }
+    }*/
 
     public static Attack addAttack() {
         String name = InputHelper.readString(scanner, "Write attack name: ");
         Type type = InputHelper.readType(scanner);
         int damage = InputHelper.readIntDamAcc(scanner, "Write damage 1-100: ");
         int accuracy = InputHelper.readIntDamAcc(scanner, "Write accuracy 1-100: ");
-        Attack newAttack = new Attack(name, damage, accuracy, type);
-        return newAttack;
+        return new DamageAttack(name, damage, accuracy, type);
     }
 
     public static void addPokemonAttack(ArrayList<Pokemon> pokedex) {
@@ -94,7 +94,8 @@ public class Utilities {
             return;
         }
     }
-    public static void pokeStats(){
+
+    public static void pokeStats() {
 
         //hashmap för vinster och förluster per pokemon i pokedex
     }
