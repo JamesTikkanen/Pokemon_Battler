@@ -1,10 +1,7 @@
 package repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Attack;
-import model.DamageAttack;
-import model.Pokemon;
-import model.Type;
+import model.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -74,30 +71,30 @@ public class PokeData {
         }
     }
 
-    public static final ArrayList<Pokemon> wildPokeData(){
+    public static final ArrayList<Pokemon> wildPokeData() {
         ArrayList<Pokemon> wildPokeList = new ArrayList<>();
         //🐭🐺🌱🪿🐯
-        Pokemon rattata = new Pokemon("\uD83D\uDC2D Rattata",Type.NORMAL,130,130);
-        rattata.addAttack(new DamageAttack("Bite",45,80,Type.NORMAL));
-        rattata.addAttack(new DamageAttack("Tail whip",35,80,Type.NORMAL));
+        Pokemon rattata = new Pokemon("\uD83D\uDC2D Rattata", Type.NORMAL, 130, 130);
+        rattata.addAttack(new DamageAttack("Bite", 45, 80, Type.NORMAL));
+        rattata.addAttack(new DamageAttack("Tail whip", 35, 80, Type.NORMAL));
 
-        Pokemon wulpix = new Pokemon("\uD83D\uDC3A Wulpix",Type.FIRE,140,140);
-        wulpix.addAttack(new DamageAttack("Fire burst",60,75,Type.FIRE));
-        wulpix.addAttack(new DamageAttack("Slash",45,85,Type.NORMAL));
+        Pokemon wulpix = new Pokemon("\uD83D\uDC3A Wulpix", Type.FIRE, 140, 140);
+        wulpix.addAttack(new DamageAttack("Fire burst", 60, 75, Type.FIRE));
+        wulpix.addAttack(new DamageAttack("Slash", 45, 85, Type.NORMAL));
 
-        Pokemon oddish = new Pokemon("\uD83C\uDF31 Oddish",Type.GRASS,130,130);
-        oddish.addAttack(new DamageAttack("Vine whip",50,75,Type.GRASS));
-        oddish.addAttack(new DamageAttack("Slam",40,80,Type.NORMAL));
+        Pokemon oddish = new Pokemon("\uD83C\uDF31 Oddish", Type.GRASS, 130, 130);
+        oddish.addAttack(new DamageAttack("Vine whip", 50, 75, Type.GRASS));
+        oddish.addAttack(new DamageAttack("Slam", 40, 80, Type.NORMAL));
 
-        Pokemon psyduck = new Pokemon("\uD83E\uDEBF Psyduck",Type.WATER,140,140);
-        psyduck.addAttack(new DamageAttack("Water beam",50,80,Type.WATER));
-        psyduck.addAttack(new DamageAttack("Bite",40,80,Type.NORMAL));
+        Pokemon psyduck = new Pokemon("\uD83E\uDEBF Psyduck", Type.WATER, 140, 140);
+        psyduck.addAttack(new DamageAttack("Water beam", 50, 80, Type.WATER));
+        psyduck.addAttack(new DamageAttack("Bite", 40, 80, Type.NORMAL));
 
-        Pokemon electabuzz = new Pokemon("\uD83D\uDC2F Electabuzz ",Type.ELECTRIC,160,160);
-        electabuzz.addAttack(new DamageAttack("Thunder strike",60,85,Type.ELECTRIC));
-        electabuzz.addAttack(new DamageAttack("Slash",40,90,Type.NORMAL));
+        Pokemon electabuzz = new Pokemon("\uD83D\uDC2F Electabuzz ", Type.ELECTRIC, 160, 160);
+        electabuzz.addAttack(new DamageAttack("Thunder strike", 60, 85, Type.ELECTRIC));
+        electabuzz.addAttack(new DamageAttack("Slash", 40, 90, Type.NORMAL));
 
-        wildPokeList.addAll(Arrays.asList(rattata,wulpix,oddish,psyduck,electabuzz));
+        wildPokeList.addAll(Arrays.asList(rattata, wulpix, oddish, psyduck, electabuzz));
         return wildPokeList;
     }
 }

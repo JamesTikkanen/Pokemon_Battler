@@ -71,9 +71,11 @@ public class BattleEngine {
             }
             if (player.isFainted()) {
                 System.out.println("\n🤕 You lost!");
+                player.addLoss();
                 break;
             } else if (enemy.isFainted()) {
                 System.out.println("\n😁 You won!");
+                player.addWins();
                 break;
             }
         }

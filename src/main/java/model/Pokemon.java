@@ -98,17 +98,19 @@ public class Pokemon {
     public Boolean isFainted() {
         return this.currentHp == 0;
     }
-    /*
-    public void attack(Pokemon target, Attack attack) {
-        System.out.println(this.name + " uses " + attack.getName() + " [" + DamageAttack.getDamage() + " dmg] on " + target.getName());
-        int oldHp = target.getCurrentHp();
-        target.takeDamage(attack.getDamage());
-        System.out.println(target.getName() + ": " + oldHp + " hp -> " + target.getCurrentHp() + " hp");
-    }*/
+
+    private int wins;
+    private int loss;
+
+    public int getWins(){ return wins; }
+    public int getLoss(){ return loss;}
+    public void addWins(){ wins++; }
+    public void addLoss(){ loss++; }
 
     @Override
     public String toString() {
-        return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":HP";
+        return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":HP" +
+                "\n| W: " + getWins() + " | L: " + getLoss() + " |";
     }
 }
 
