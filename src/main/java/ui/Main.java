@@ -27,7 +27,7 @@ public class Main {
         } else {
             pokedex = pokeDataSeed();
             System.out.println("* No file found, seed data loaded *");
-        }
+        }pokedex = pokeDataSeed();
 
         while (true) {
             System.out.println("\n---------------------\n-------POKÉDEX-------\n---------------------");

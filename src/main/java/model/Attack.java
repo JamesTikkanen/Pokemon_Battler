@@ -7,7 +7,7 @@ public abstract class Attack {
     //private final int damage;
     private final int accuracy;
 
-    protected Attack(String name, int damage, int accuracy, Type type) {
+    protected Attack(String name, int accuracy, Type type) {
         if (name == null || name.isBlank()) {
             System.out.println("* Name can't be empty *");
         }else if (accuracy <= 0 || accuracy > 100) {
@@ -18,6 +18,8 @@ public abstract class Attack {
         //this.damage = damage;
         this.accuracy = accuracy;
     }
+
+    public abstract void execute(Pokemon attacker, Pokemon target);
 
     public String getName() {
         return name;
@@ -49,6 +51,6 @@ public abstract class Attack {
 
     @Override
     public String toString() {
-        return name + " [" + type.getLable() + "] " + ":dmg " + accuracy + ":acc";
+        return name + " [" + type.getLable() + "] " + accuracy + ":acc";
     }
 }

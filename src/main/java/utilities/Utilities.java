@@ -27,7 +27,7 @@ public class Utilities {
             }
         }
     }
-    /*
+
     public static void addPokemon() {
         System.out.println("\n---Add a Pokémon.--");
         String name = InputHelper.readString(scanner, "Write Pokémon name: ");
@@ -41,7 +41,7 @@ public class Utilities {
         newPokemon.addAttack(addAttack());
         pokedex.add(newPokemon);
         System.out.println("* Added a new pokemon *");
-    }*/
+    }
 
     public static Attack addAttack() {
         String name = InputHelper.readString(scanner, "Write attack name: ");
@@ -74,7 +74,8 @@ public class Utilities {
         String search = InputHelper.readString(scanner, "Enter name to search: ");
         for (Pokemon p : pokedex) {
             if (p.getName().equalsIgnoreCase(search)) {
-                System.out.println("Pokémon " + p.getName() + " found");
+                System.out.println("Pokémon found");
+                System.out.println(p);
                 return;
             }
         }
