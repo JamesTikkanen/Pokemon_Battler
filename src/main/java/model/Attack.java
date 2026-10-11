@@ -4,7 +4,6 @@ public abstract class Attack {
 
     private final String name;
     private final Type type;
-    //private final int damage;
     private final int accuracy;
 
     protected Attack(String name, int accuracy, Type type) {
@@ -24,14 +23,6 @@ public abstract class Attack {
     public String getName() {
         return name;
     }
-    /*
-    public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            System.out.println("* Name can't be empty *");
-            return;
-        }
-        this.name = name;
-    }*/
 
     public Type getType() {
         return type;
@@ -40,14 +31,6 @@ public abstract class Attack {
     public int getAccuracy() {
         return accuracy;
     }
-/*
-    public void setAccuracy(int accuracy) {
-        if (accuracy < 1 || accuracy > 100) {
-            System.out.println("* Accuracy must be between 1-100 *");
-            return;
-        }
-        this.accuracy = accuracy;
-    }*/
 
     @Override
     public String toString() {

@@ -15,7 +15,7 @@ public class DamageAttack extends Attack {
         return damage;
     }
 
-    private static double getTypeMultiplier(Type atk, Type def) {
+    public static double getTypeMultiplier(Type atk, Type def) {
         if (atk == Type.FIRE && def == Type.GRASS) return 2.0;
         if (atk == Type.WATER && def == Type.FIRE) return 2.0;
         if (atk == Type.GRASS && def == Type.WATER) return 2.0;
@@ -31,9 +31,16 @@ public class DamageAttack extends Attack {
 
     @Override
     public void execute(Pokemon attacker, Pokemon target) {
+        double mult = getTypeMultiplier(getType(), target.getType());
+        double converter = Math.round(damage * mult);
+        int finalDamage = (int) converter;
+
         int oldHp = target.getCurrentHp();
-        target.takeDamage(damage);
+        target.takeDamage(finalDamage);
+
         System.out.println(attacker.getName() + " uses " + getName() + " [" + damage + " dmg] on " + target.getName());
+        if(mult>1) System.out.println("It's super effective!");
+        else if(mult<1) System.out.println("It's not effective...");
         System.out.println(target.getName() + " takes damage: " + oldHp + " hp -> " + target.getCurrentHp() + " hp");
     }
 

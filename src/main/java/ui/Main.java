@@ -2,7 +2,6 @@ package ui;
 
 import inputcheck.InputHelper;
 import model.Pokemon;
-import model.Type;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
+import static repository.FileHandler.loadFile;
+import static repository.FileHandler.saveFile;
 import static utilities.Utilities.*;
 import static repository.PokeData.*;
 
@@ -18,7 +19,7 @@ public class Main {
     public static ArrayList<Pokemon> pokedex = new ArrayList<>();
     public static Path pokedexPath = Path.of("Pokedex.json");
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         Path pokedexPath = Path.of("Pokedex.json");
         if (Files.exists(pokedexPath)){

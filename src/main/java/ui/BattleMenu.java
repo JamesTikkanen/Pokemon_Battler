@@ -1,8 +1,6 @@
 package ui;
 
 import inputcheck.InputHelper;
-import model.Type;
-import utilities.BattleEngine;
 
 import static ui.Main.scanner;
 import static utilities.BattleEngine.pokedexBattle;

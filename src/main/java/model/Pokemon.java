@@ -99,13 +99,31 @@ public class Pokemon {
         return this.currentHp == 0;
     }
 
+
     private int wins;
     private int loss;
 
-    public int getWins(){ return wins; }
-    public int getLoss(){ return loss;}
-    public void addWins(){ wins++; }
-    public void addLoss(){ loss++; }
+    public int getWins() {
+        return wins;
+    }
+
+    public int getLoss() {
+        return loss;
+    }
+
+    public void addWins() {
+        wins++;
+    }
+
+    public void addLoss() {
+        loss++;
+    }
+
+    public void setStats(int wins, int loss) {
+        this.wins = wins;
+        this.loss = loss;
+    }
+
 
     @Override
     public String toString() {

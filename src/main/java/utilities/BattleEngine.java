@@ -6,7 +6,6 @@ import model.Pokemon;
 import java.util.Random;
 
 import static inputcheck.InputHelper.readInt;
-import static repository.PokeData.pokeDataSeed;
 import static repository.PokeData.wildPokeData;
 import static ui.Main.pokedex;
 import static ui.Main.scanner;
@@ -22,11 +21,12 @@ public class BattleEngine {
         battle(player, enemy);
 
     }
-    public static void pokedexBattle(){
+
+    public static void pokedexBattle() {
         Pokemon player = choosePokemon();
         System.out.println("\n------Choose Enemy------ ");
         Pokemon enemy = choosePokemon();
-        battle(player,enemy);
+        battle(player, enemy);
     }
 
     private static Pokemon choosePokemon() {
@@ -66,6 +66,13 @@ public class BattleEngine {
                 } else {
                     Attack a = enemy.getAttack().get(random.nextInt(0, enemy.getAttack().size()));
                     useAttack(enemy, a, player);
+                }
+                for (int i = 0; i < 3; i++) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.out.println("* Counter interrupted *");
+                    }
                 }
                 playerTurn = !playerTurn;
             }

@@ -1,25 +1,18 @@
 package model;
 //🔥💧🥬✊⚡
 public enum Type {
-    FIRE("Fire \uD83D\uDD25,", true),
-    WATER("Water \uD83D\uDCA7", true),
-    GRASS("Grass \uD83E\uDD6C", true),
-    ELECTRIC("Electric ⚡",true),
-    NORMAL("Normal ✊",false);
+    FIRE("Fire \uD83D\uDD25,"),
+    WATER("Water \uD83D\uDCA7"),
+    GRASS("Grass \uD83E\uDD6C"),
+    ELECTRIC("Electric ⚡"),
+    NORMAL("Normal ✊");
 
     private final String lable;
-    private final Boolean normal;
 
-    Type(String lable, boolean normal){
+    Type(String lable){
         this.lable = lable;
-        this.normal = normal;
-
     }
-
     public String getLable(){
         return lable;
     }
-
-    public Boolean getNormal(){return normal;}
-
 }
