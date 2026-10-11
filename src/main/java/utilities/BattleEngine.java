@@ -7,6 +7,7 @@ import java.util.Random;
 
 import static inputcheck.InputHelper.readInt;
 import static repository.PokeData.wildPokeData;
+import static repository.StatsFile.saveStatsFile;
 import static ui.Main.pokedex;
 import static ui.Main.scanner;
 import static utilities.Utilities.showPokeData;
@@ -79,10 +80,12 @@ public class BattleEngine {
             if (player.isFainted()) {
                 System.out.println("\n🤕 You lost!");
                 player.addLoss();
+                saveStatsFile(pokedex);
                 break;
             } else if (enemy.isFainted()) {
                 System.out.println("\n😁 You won!");
                 player.addWins();
+                saveStatsFile(pokedex);
                 break;
             }
         }

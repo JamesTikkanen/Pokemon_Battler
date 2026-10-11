@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import static repository.FileHandler.loadFile;
 import static repository.FileHandler.saveFile;
+import static repository.StatsFile.loadStatsFile;
 import static utilities.Utilities.*;
 import static repository.PokeData.*;
 
@@ -29,6 +30,7 @@ public class Main {
             pokedex = pokeDataSeed();
             System.out.println("* No file found, seed data loaded *");
         }pokedex = pokeDataSeed();
+        loadStatsFile(pokedex);
 
         while (true) {
             System.out.println("\n---------------------\n-------POKÉDEX-------\n---------------------");
@@ -74,6 +76,7 @@ public class Main {
                 }
                 case 7 -> { //Laddar fram en JSON fil om det finns till pokedex
                     pokedex = new ArrayList<>(loadFile(pokedexPath));
+                    loadStatsFile(pokedex);
                 }
                 case 8 -> {//Återställer pokeList till seed data
                     pokedex = pokeDataSeed();
