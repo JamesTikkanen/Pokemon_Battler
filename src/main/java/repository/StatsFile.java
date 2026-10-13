@@ -28,7 +28,7 @@ public class StatsFile {
 
     public static void loadStatsFile(List<Pokemon> pokedex) {
         if (!Files.exists(statsPath)) {
-            System.out.println("* No file found *");
+            System.out.println("* No stats file found *");
             return;
         }
         try {

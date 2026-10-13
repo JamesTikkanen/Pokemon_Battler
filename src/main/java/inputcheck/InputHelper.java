@@ -32,17 +32,15 @@ public class InputHelper {
             System.out.print(prompt);
             try {
                 String input = scanner.nextLine().trim();
-                if (input.length() > 20) {
-                    System.out.println("* Can't be more than 20 characters *");
-                    continue;
-                } else if (input == null || input.isBlank()) {
-                    System.out.println("* Can't leave name empty *");
-                    continue;
-                }
+                EmptyNameException.noEmptyName(input);
+                NameLengthException.nameCheckLength(input);
                 return input;
             } catch (InputMismatchException e) {
-                System.out.println("* Invalid, try again *");
-                continue;
+                System.out.println("*INVALID INPUT\n");
+            } catch (EmptyNameException e) {
+                System.out.println("*INVALID! " + e.getMessage() + "\n");
+            } catch (NameLengthException e) {
+                System.out.println("*INVALID! " + e.getMessage() + "\n");
             }
         }
     }
