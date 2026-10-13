@@ -8,6 +8,7 @@ import java.util.Random;
 import static inputcheck.InputHelper.readInt;
 import static repository.PokeData.wildPokeData;
 import static repository.StatsFile.saveStatsFile;
+import static ui.BattleMenu.battleMenu;
 import static ui.Main.pokedex;
 import static ui.Main.scanner;
 import static utilities.Utilities.showPokeData;
@@ -20,14 +21,22 @@ public class BattleEngine {
         int wildRandom = random.nextInt(0, wildPokeData().size());
         Pokemon enemy = wildPokeData().get(wildRandom);
         battle(player, enemy);
-
     }
 
     public static void pokedexBattle() {
         Pokemon player = choosePokemon();
-        System.out.println("\n------Choose Enemy------ ");
-        Pokemon enemy = choosePokemon();
+        Pokemon enemy;
+        while (true) {
+            System.out.println("\n------Choose Enemy------ ");
+            enemy = choosePokemon();
+            if (player == enemy) {
+                System.out.println("* Can't fight yourself *");
+                continue;
+            }
+            break;
+        }
         battle(player, enemy);
+
     }
 
     private static Pokemon choosePokemon() {
@@ -54,43 +63,42 @@ public class BattleEngine {
     }
 
     private static void battle(Pokemon player, Pokemon enemy) {
-        while (true) {
-            System.out.println("\n|---------------------|\n" + player.getName() + " VS " + enemy.getName() + "\n");
-            boolean playerTurn = coinToss(player, enemy) == player;
-            System.out.println((playerTurn ? player.getName() : enemy.getName()) + " starts!");
+        System.out.println("\n|---------------------|\n" + player.getName() + " VS " + enemy.getName() + "\n");
+        boolean playerTurn = coinToss(player, enemy) == player;
+        System.out.println((playerTurn ? player.getName() : enemy.getName()) + " starts!");
 
-            while (!player.isFainted() && !enemy.isFainted()) {
-                System.out.println("\n___________________________________________________\n" + player + "\n" + enemy + "\n");
+        while (!player.isFainted() && !enemy.isFainted()) {
+            System.out.println("\n___________________________________________________\n" + player + "\n" + enemy + "\n");
 
-                if (playerTurn) {
-                    useAttack(player, chooseAttack(player), enemy);
-                } else {
-                    System.out.println("------");
-                    Attack a = enemy.getAttack().get(random.nextInt(0, enemy.getAttack().size()));
-                    useAttack(enemy, a, player);
-                    System.out.println("------");
-                }
-                for (int i = 0; i < 3; i++) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        System.out.println("* Counter interrupted *");
-                    }
-                }
-                playerTurn = !playerTurn;
+            if (playerTurn) {
+                useAttack(player, chooseAttack(player), enemy);
+            } else {
+                System.out.println("------");
+                Attack a = enemy.getAttack().get(random.nextInt(0, enemy.getAttack().size()));
+                useAttack(enemy, a, player);
+                System.out.println("------");
             }
-            if (player.isFainted()) {
-                System.out.println("\n🤕 You lost!");
-                player.addLoss();
-                saveStatsFile(pokedex);
-                break;
-            } else if (enemy.isFainted()) {
-                System.out.println("\n😁 You won!");
-                player.addWins();
-                saveStatsFile(pokedex);
-                break;
+            for (int i = 0; i < 3; i++) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    System.out.println("* Counter interrupted *");
+                }
             }
+            playerTurn = !playerTurn;
         }
+        if (player.isFainted()) {
+            System.out.println("\n🤕 You lost!");
+            player.addLoss();
+            saveStatsFile(pokedex);
+
+        } else if (enemy.isFainted()) {
+            System.out.println("\n😁 You won!");
+            player.addWins();
+            saveStatsFile(pokedex);
+            battleMenu();
+        }
+
     }
 
     private static Attack chooseAttack(Pokemon player) {
