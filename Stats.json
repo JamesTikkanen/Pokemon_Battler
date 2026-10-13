@@ -1,0 +1,25 @@
+[ {
+  "name" : "\uD83D\uDE3A Pikachu",
+  "wins" : 0,
+  "losses" : 0
+}, {
+  "name" : "\uD83E\uDD8A Charmander",
+  "wins" : 1,
+  "losses" : 0
+}, {
+  "name" : "\uD83D\uDC0B Squirtle",
+  "wins" : 0,
+  "losses" : 0
+}, {
+  "name" : "\uD83D\uDC38 Bulbasaur",
+  "wins" : 0,
+  "losses" : 0
+}, {
+  "name" : "\uD83D\uDC39 Eevee",
+  "wins" : 0,
+  "losses" : 0
+}, {
+  "name" : "\uD83D\uDC2E Snorlax",
+  "wins" : 0,
+  "losses" : 0
+} ]

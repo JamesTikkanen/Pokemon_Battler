@@ -2,9 +2,11 @@ package ui;
 
 import inputcheck.InputHelper;
 
+import static ui.Main.pokedex;
 import static ui.Main.scanner;
 import static utilities.BattleEngine.pokedexBattle;
 import static utilities.BattleEngine.wildBattle;
+import static utilities.Utilities.healPokemon;
 
 public class BattleMenu {
     public static void battleMenu() {
@@ -13,9 +15,10 @@ public class BattleMenu {
             System.out.println("\n--------POKÉMON--------\n--------BATTLER--------\n");
             System.out.println("[1] BATTLE WILD POKEMON");
             System.out.println("[2] BATTLE POKÉDEX");
-            System.out.println("[3] EXIT POKÉMON BATTLER");
+            System.out.println("[3] HEAL ALL POKÉMON");
+            System.out.println("[4] EXIT POKÉMON BATTLER");
             int choice = InputHelper.readInt(scanner, "Write choice: ");
-            if (choice < 1 || choice > 3) {
+            if (choice < 1 || choice > 4) {
                 System.out.println("Invalid choice");
                 continue;
             }
@@ -26,7 +29,10 @@ public class BattleMenu {
                 case 2 -> { //Slås mot en pokemon i pokedex
                     pokedexBattle();
                 }
-                case 3 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till model.Attack.
+                case 3 -> {
+                    healPokemon(pokedex);
+                }
+                case 4 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till model.Attack.
                     System.out.println("Returning to Pokédex");
                     return;
                 }

@@ -1,7 +1,7 @@
 package model;
 //🔥💧🥬✊⚡
 public enum Type {
-    FIRE("Fire \uD83D\uDD25,"),
+    FIRE("Fire \uD83D\uDD25"),
     WATER("Water \uD83D\uDCA7"),
     GRASS("Grass \uD83E\uDD6C"),
     ELECTRIC("Electric ⚡"),

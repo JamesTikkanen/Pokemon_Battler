@@ -58,7 +58,7 @@ public class PokeData {
         psyduck.addAttack(new DamageAttack("Water beam", 50, 80, Type.WATER));
         psyduck.addAttack(new DamageAttack("Bite", 40, 80, Type.NORMAL));
 
-        Pokemon electabuzz = new Pokemon("\uD83D\uDC2F Electabuzz ", Type.ELECTRIC, 160, 160);
+        Pokemon electabuzz = new Pokemon("\uD83D\uDC2F Electabuzz", Type.ELECTRIC, 160, 160);
         electabuzz.addAttack(new DamageAttack("Thunder strike", 60, 85, Type.ELECTRIC));
         electabuzz.addAttack(new DamageAttack("Slash", 40, 90, Type.NORMAL));
 

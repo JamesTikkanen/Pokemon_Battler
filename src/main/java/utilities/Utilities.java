@@ -32,7 +32,7 @@ public class Utilities {
         System.out.println("\n---Add a Pokémon.--");
         String name = InputHelper.readString(scanner, "Write Pokémon name: ");
         Type type = InputHelper.readType(scanner);
-        int maxHp = InputHelper.readIntHp(scanner, "Write HP 0-200: ");
+        int maxHp = InputHelper.readIntHp(scanner, "Write HP 1-200: ");
         int currentHp = maxHp;
 
         Pokemon newPokemon = new Pokemon(name, type, maxHp, currentHp);
@@ -73,7 +73,7 @@ public class Utilities {
     public static void searchPokemon(ArrayList<Pokemon> pokedex) {
         String search = InputHelper.readString(scanner, "Enter name to search: ");
         for (Pokemon p : pokedex) {
-            if (p.getName().equalsIgnoreCase(search)) {
+            if (p.getName().toLowerCase().contains(search)) {
                 System.out.println("Pokémon found");
                 System.out.println(p);
                 return;
@@ -96,8 +96,10 @@ public class Utilities {
         }
     }
 
-    public static void pokeStats() {
-
-        //hashmap för vinster och förluster per pokemon i pokedex
+    public static void healPokemon(ArrayList<Pokemon> pokedex) {
+        for (Pokemon p : pokedex) {
+            p.heal(p.getMaxHp());
+        }
+        System.out.println("All Pokémons are healed");
     }
 }
