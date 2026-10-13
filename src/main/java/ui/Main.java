@@ -24,12 +24,11 @@ public class Main {
 
         Path pokedexPath = Path.of("Pokedex.json");
         if (Files.exists(pokedexPath)){
-            System.out.println();
             pokedex = new ArrayList<>(loadFile(pokedexPath));
         } else {
             pokedex = pokeDataSeed();
             System.out.println("* No file found, seed data loaded *");
-        }pokedex = pokeDataSeed();
+        }
         loadStatsFile(pokedex);
 
         while (true) {
@@ -80,6 +79,7 @@ public class Main {
                 }
                 case 8 -> {//Återställer pokeList till seed data
                     pokedex = pokeDataSeed();
+                    loadStatsFile(pokedex);
                     System.out.println("* Pokédex restored to seed data *");
                 }
             }

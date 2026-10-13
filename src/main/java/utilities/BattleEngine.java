@@ -65,8 +65,10 @@ public class BattleEngine {
                 if (playerTurn) {
                     useAttack(player, chooseAttack(player), enemy);
                 } else {
+                    System.out.println("------");
                     Attack a = enemy.getAttack().get(random.nextInt(0, enemy.getAttack().size()));
                     useAttack(enemy, a, player);
+                    System.out.println("------");
                 }
                 for (int i = 0; i < 3; i++) {
                     try {
@@ -95,7 +97,7 @@ public class BattleEngine {
         System.out.println("Choose attack to use");
         int i = 0;
         for (Attack a : player.getAttack()) {
-            System.out.println("[" + i + "] " + a);
+            System.out.println("⚔\uFE0F[" + i + "] " + a);
             i++;
         }
         while (true) {
@@ -112,7 +114,7 @@ public class BattleEngine {
         if (random.nextInt(0, 101) > attack.getAccuracy()) {
             System.out.println(attacker.getName() + " uses " + attack.getName() + "... missed attack!");
             return;
-        }
+        }//⚔️❤️
         attack.execute(attacker, target);
     }
 

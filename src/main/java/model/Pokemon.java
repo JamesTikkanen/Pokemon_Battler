@@ -127,7 +127,7 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":HP" +
+        return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":❤\uFE0F" +
                 "\n| W: " + getWins() + " | L: " + getLoss() + " |";
     }
 }
