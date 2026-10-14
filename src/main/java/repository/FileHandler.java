@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static repository.PokeData.pokeDataSeed;
 import static ui.Main.pokedexPath;
 
 public class FileHandler {
@@ -26,6 +27,7 @@ public class FileHandler {
         ObjectMapper mapper = new ObjectMapper();
         if (!Files.exists(pokedexPath)) {
             System.out.println("* No file found *");
+            pokeDataSeed();
             return new ArrayList<>();
         }
         try {

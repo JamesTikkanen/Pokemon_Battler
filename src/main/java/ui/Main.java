@@ -25,9 +25,10 @@ public class Main {
         Path pokedexPath = Path.of("Pokedex.json");
         if (Files.exists(pokedexPath)){
             pokedex = new ArrayList<>(loadFile(pokedexPath));
-        } else {
-            pokedex = pokeDataSeed();
-            System.out.println("* No file found, seed data loaded *");
+            if(pokedex.isEmpty()) {
+                System.out.println("* 'Pokedex.json' file empty, seed data loaded *");
+                pokedex = pokeDataSeed();
+            }
         }
         loadStatsFile(pokedex);
 
@@ -55,10 +56,10 @@ public class Main {
                 case 0 -> {//meny val för pokemon battler
                     BattleMenu.battleMenu();
                 }
-                case 1 -> { //Om pokeList är tom går till menyval annars visas pokeList
+                case 1 -> { //Om pokeList är tom går till menyval annars visas pokedex
                     showPokeData(pokedex);
                 }
-                case 2 -> { //Lägger till pokemon + en attack till pokeList.
+                case 2 -> { //Lägger till pokemon + en attack till pokedex.
                     addPokemon();
                 }
                 case 3 -> { //Lägger till en attack till en vald pokemon
@@ -67,17 +68,17 @@ public class Main {
                 case 4 -> { //Kan söka efter en pokemon med ett namn
                     searchPokemon(pokedex);
                 }
-                case 5 -> { //Tar bort en pokemon från pokeList.
+                case 5 -> { //Tar bort en pokemon från pokedex.
                     removePokemon(pokedex);
                 }
-                case 6 -> { //Sparar pokeList till en JSON fil.
+                case 6 -> { //Sparar pokedex till en JSON fil.
                     saveFile(pokedexPath, pokedex);
                 }
                 case 7 -> { //Laddar fram en JSON fil om det finns till pokedex
                     pokedex = new ArrayList<>(loadFile(pokedexPath));
                     loadStatsFile(pokedex);
                 }
-                case 8 -> {//Återställer pokeList till seed data
+                case 8 -> {//Återställer pokedex till seed data
                     pokedex = pokeDataSeed();
                     loadStatsFile(pokedex);
                     System.out.println("* Pokédex restored to seed data *");

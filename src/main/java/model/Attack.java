@@ -14,7 +14,6 @@ public abstract class Attack {
         }
         this.name = name;
         this.type = type;
-        //this.damage = damage;
         this.accuracy = accuracy;
     }
 

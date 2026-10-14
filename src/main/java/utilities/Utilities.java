@@ -71,7 +71,7 @@ public class Utilities {
     }
 
     public static void searchPokemon(ArrayList<Pokemon> pokedex) {
-        String search = InputHelper.readString(scanner, "Enter name to search: ");
+        String search = InputHelper.readString(scanner, "Enter name to search: ").toLowerCase();
         for (Pokemon p : pokedex) {
             if (p.getName().toLowerCase().contains(search)) {
                 System.out.println("Pokémon found");

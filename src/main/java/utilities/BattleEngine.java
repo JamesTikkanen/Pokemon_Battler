@@ -3,12 +3,12 @@ package utilities;
 import model.Attack;
 import model.Pokemon;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static inputcheck.InputHelper.readInt;
 import static repository.PokeData.wildPokeData;
 import static repository.StatsFile.saveStatsFile;
-import static ui.BattleMenu.battleMenu;
 import static ui.Main.pokedex;
 import static ui.Main.scanner;
 import static utilities.Utilities.showPokeData;
@@ -17,6 +17,7 @@ public class BattleEngine {
     private static Random random = new Random();
 
     public static void wildBattle() {
+        if(!notFainted(pokedex))return;
         Pokemon player = choosePokemon();
         int wildRandom = random.nextInt(0, wildPokeData().size());
         Pokemon enemy = wildPokeData().get(wildRandom);
@@ -24,6 +25,7 @@ public class BattleEngine {
     }
 
     public static void pokedexBattle() {
+        if(!notFainted(pokedex))return;
         Pokemon player = choosePokemon();
         Pokemon enemy;
         while (true) {
@@ -96,9 +98,7 @@ public class BattleEngine {
             System.out.println("\n😁 You won!");
             player.addWins();
             saveStatsFile(pokedex);
-            battleMenu();
         }
-
     }
 
     private static Attack chooseAttack(Pokemon player) {
@@ -127,6 +127,26 @@ public class BattleEngine {
     }
 
     private static Pokemon coinToss(Pokemon player, Pokemon enemy) {
+        System.out.println("A coin toss to see who starts");
         return random.nextInt(0, 2) == 0 ? player : enemy;
+    }
+
+
+    private static Boolean notFainted(ArrayList<Pokemon> pokedex) {
+        if (pokedex.isEmpty()) {
+            System.out.println("* No Pokémons exists in Pokédex *");
+            return false;
+        }
+        int faint = 0;
+        for (Pokemon p : pokedex) {
+            if (p.isFainted()) {
+                faint++;
+            }
+        }
+        if (faint == pokedex.size()) {
+            System.out.println("* All of the Pokémons has fainted *");
+            return false;
+        }
+        return true;
     }
 }

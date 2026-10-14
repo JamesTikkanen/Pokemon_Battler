@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Pokemon {
     private static int totalCreated = 0;
 
-    private final String name;
-    private final Type type;
-    private final int maxHp;
+    private String name;
+    private Type type;
+    private int maxHp;
     private int currentHp;
     private ArrayList<Attack> attacks = new ArrayList<>();
+
+    public Pokemon(){}
 
     public Pokemon(String name, Type type, int maxHp, int currentHp) {
         if (name == null || name.isBlank()) {
@@ -21,11 +23,6 @@ public class Pokemon {
         this.type = type;
         this.maxHp = maxHp;
         this.currentHp = maxHp;
-        totalCreated++;
-    }
-
-    public static int getTotalCreated() {
-        return totalCreated;
     }
 
     public String getName() {
@@ -57,19 +54,6 @@ public class Pokemon {
     public ArrayList<Attack> getAttack() {
         return attacks;
     }
-    /*
-    public void setAttack(ArrayList<Attack> attacks) {
-        if (attacks == null || attacks.isEmpty()) {
-            System.out.println("* No attacks exists *");
-            return;
-        } else if (attacks.size() > 4) {
-            System.out.println("* Can't have more than 4 attacks *");
-            return;
-        } else if (attacks.size() < 1) {
-            System.out.println("* Can't be less than 1 attack *");
-        }
-        this.attacks = attacks;
-    }*/
 
     public void addAttack(Attack attack) {
         if (attacks.size() >= 4) {
