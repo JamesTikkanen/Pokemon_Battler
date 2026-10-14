@@ -22,11 +22,13 @@ public class Main {
 
     public static void main(String[] args){
 
-        Path pokedexPath = Path.of("Pokedex.json");
         if (Files.exists(pokedexPath)){
             pokedex = new ArrayList<>(loadFile(pokedexPath));
             if(pokedex.isEmpty()) {
-                System.out.println("* 'Pokedex.json' file empty, seed data loaded *");
+                System.out.println("* 'Pokedex.json' file is empty, seed data loaded *");
+                pokedex = pokeDataSeed();
+            } else if (!Files.exists(pokedexPath)){
+                System.out.println("* No 'Pokedex.json' file found, seed data loaded *");
                 pokedex = pokeDataSeed();
             }
         }

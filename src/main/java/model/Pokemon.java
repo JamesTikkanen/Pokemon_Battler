@@ -114,5 +114,6 @@ public class Pokemon {
         return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":❤\uFE0F" +
                 "\n| W: " + getWins() + " | L: " + getLoss() + " |";
     }
+
 }
 
