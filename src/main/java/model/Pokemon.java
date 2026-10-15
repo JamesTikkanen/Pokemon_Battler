@@ -11,18 +11,26 @@ public class Pokemon {
     private int currentHp;
     private ArrayList<Attack> attacks = new ArrayList<>();
 
-    public Pokemon(){}
+    public Pokemon() {
+    }
 
     public Pokemon(String name, Type type, int maxHp, int currentHp) {
         if (name == null || name.isBlank()) {
-            System.out.println("* Name can't be empty *");
-        } else if (maxHp <= 0 || maxHp > 200) {
-            System.out.println("* HP can only be 1-200 *");
+            throw new IllegalArgumentException("* Name can't be empty *");
+        }
+        if (maxHp <= 0 || maxHp > 200) {
+            throw new IllegalArgumentException("* HP can only be 1-200 *");
+        }
+        if (type == null) {
+            throw new IllegalArgumentException("* Type can't be null *");
+        }
+        if (currentHp < 0 || currentHp > maxHp) {
+            throw new IllegalArgumentException("* Current hp must be between 0-200 *");
         }
         this.name = name;
         this.type = type;
         this.maxHp = maxHp;
-        this.currentHp = maxHp;
+        this.currentHp = currentHp;
     }
 
     public String getName() {
@@ -34,9 +42,6 @@ public class Pokemon {
     }
 
     public int getMaxHp() {
-        if (maxHp < 0 || maxHp > 200) {
-            System.out.println("* Must be between 1-200 *");
-        }
         return maxHp;
     }
 
@@ -51,7 +56,7 @@ public class Pokemon {
             this.currentHp = hp;
     }
 
-    public ArrayList<Attack> getAttack() {
+    public ArrayList<Attack> getAttacks() {
         return attacks;
     }
 
@@ -79,7 +84,7 @@ public class Pokemon {
         this.currentHp = Math.min(maxHp, this.currentHp + amount);
     }
 
-    public Boolean isFainted() {
+    public boolean isFainted() {
         return this.currentHp == 0;
     }
 
@@ -91,7 +96,7 @@ public class Pokemon {
         return wins;
     }
 
-    public int getLoss() {
+    public int getLosses() {
         return loss;
     }
 
@@ -99,7 +104,7 @@ public class Pokemon {
         wins++;
     }
 
-    public void addLoss() {
+    public void addLosses() {
         loss++;
     }
 
@@ -112,7 +117,7 @@ public class Pokemon {
     @Override
     public String toString() {
         return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":❤\uFE0F" +
-                "\n| W: " + getWins() + " | L: " + getLoss() + " |";
+                "\n W: " + getWins() + " | L: " + getLosses() + " ";
     }
 
 }

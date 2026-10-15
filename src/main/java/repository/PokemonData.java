@@ -10,10 +10,10 @@ import java.util.List;
  * Enda lätta lösningen som jag hittade.
  */
 public class PokemonData {
-    public String name;
-    public Type type;
-    public int maxHp;
-    public int currentHp;
+    private String name;
+    private Type type;
+    private int maxHp;
+    private int currentHp;
     private List<AttackData> attacks = new ArrayList<>();
 
     public PokemonData() {

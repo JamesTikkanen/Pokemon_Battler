@@ -22,7 +22,7 @@ public class Utilities {
         for (int i = 0; i < pokeData.size(); i++) {
             Pokemon poke = pokeData.get(i);
             System.out.println("\nINDEX [" + i + "] " + poke);
-            for (Attack a : poke.getAttack()) {
+            for (Attack a : poke.getAttacks()) {
                 System.out.println("  - " + a);
             }
         }
@@ -61,7 +61,7 @@ public class Utilities {
                 continue;
             }
             Pokemon target = pokedex.get(index);
-            if (target.getAttack().size() >= 4) {
+            if (target.getAttacks().size() >= 4) {
                 System.out.println("* Can't add more than 4 attacks *");
                 return;
             }
@@ -84,6 +84,7 @@ public class Utilities {
 
     public static void removePokemon(ArrayList<Pokemon> pokedex) {
         showPokeData(pokedex);
+        if (pokedex.isEmpty()) return;
         while (true) {
             int iRemove = InputHelper.readInt(scanner, "Write index of the Pokémon to remove: ");
             if (iRemove < 0 || iRemove >= pokedex.size()) {

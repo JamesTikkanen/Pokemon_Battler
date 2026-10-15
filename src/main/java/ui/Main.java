@@ -13,24 +13,24 @@ import static repository.FileHandler.loadFile;
 import static repository.FileHandler.saveFile;
 import static repository.StatsFile.loadStatsFile;
 import static utilities.Utilities.*;
-import static repository.PokeData.*;
+import static repository.PokemonSeedData.*;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static ArrayList<Pokemon> pokedex = new ArrayList<>();
     public static Path pokedexPath = Path.of("Pokedex.json");
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        if (Files.exists(pokedexPath)){
+        if (Files.exists(pokedexPath)) {
             pokedex = new ArrayList<>(loadFile(pokedexPath));
-            if(pokedex.isEmpty()) {
+            if (pokedex.isEmpty()) {
                 System.out.println("* 'Pokedex.json' file is empty, seed data loaded *");
                 pokedex = pokeDataSeed();
-            } else if (!Files.exists(pokedexPath)){
-                System.out.println("* No 'Pokedex.json' file found, seed data loaded *");
-                pokedex = pokeDataSeed();
             }
+        }else if (!Files.exists(pokedexPath)) {
+            System.out.println("* No 'Pokedex.json' file found, seed data loaded *");
+            pokedex = pokeDataSeed();
         }
         loadStatsFile(pokedex);
 
@@ -43,7 +43,7 @@ public class Main {
             System.out.println("[4] SEARCH POKEMON");
             System.out.println("[5] REMOVE POKEMON");
             System.out.println("[6] SAVE TO FILE");
-            System.out.println("[7] LOAD FILE");
+            System.out.println("[7] LOAD FROM FILE");
             System.out.println("[8] RESET TO SEED");
             System.out.println("[9] EXIT PROGRAM");
             int input = InputHelper.readInt(scanner, "Write choice: ");
@@ -51,6 +51,7 @@ public class Main {
                 System.out.println("* Incorrect choice, only 0-9 *\n");
                 continue;
             } else if (input == 9) {
+                saveFile(pokedexPath, pokedex);
                 System.out.println("CLOSING PROGRAM...");
                 break;
             }

@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static inputcheck.InputHelper.readInt;
-import static repository.PokeData.wildPokeData;
+import static repository.PokemonSeedData.wildPokeData;
 import static repository.StatsFile.saveStatsFile;
 import static ui.Main.pokedex;
 import static ui.Main.scanner;
 import static utilities.Utilities.showPokeData;
 
 public class BattleEngine {
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     public static void wildBattle() {
         if(!notFainted(pokedex))return;
@@ -38,7 +38,6 @@ public class BattleEngine {
             break;
         }
         battle(player, enemy);
-
     }
 
     private static Pokemon choosePokemon() {
@@ -55,7 +54,7 @@ public class BattleEngine {
                 System.out.println("* " + player.getName() + " is fainted *");
                 continue;
             }
-            if (player.getAttack().isEmpty()) {
+            if (player.getAttacks().isEmpty()) {
                 System.out.println("* " + player.getName() + " has no attacks *");
                 continue;
             }
@@ -76,11 +75,11 @@ public class BattleEngine {
                 useAttack(player, chooseAttack(player), enemy);
             } else {
                 System.out.println("------");
-                Attack a = enemy.getAttack().get(random.nextInt(0, enemy.getAttack().size()));
+                Attack a = enemy.getAttacks().get(random.nextInt(0, enemy.getAttacks().size()));
                 useAttack(enemy, a, player);
                 System.out.println("------");
             }
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 2; i++) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -91,9 +90,8 @@ public class BattleEngine {
         }
         if (player.isFainted()) {
             System.out.println("\n🤕 You lost!");
-            player.addLoss();
+            player.addLosses();
             saveStatsFile(pokedex);
-
         } else if (enemy.isFainted()) {
             System.out.println("\n😁 You won!");
             player.addWins();
@@ -104,22 +102,22 @@ public class BattleEngine {
     private static Attack chooseAttack(Pokemon player) {
         System.out.println("Choose attack to use");
         int i = 0;
-        for (Attack a : player.getAttack()) {
+        for (Attack a : player.getAttacks()) {
             System.out.println("⚔\uFE0F[" + i + "] " + a);
             i++;
         }
         while (true) {
             int attackChoice = readInt(scanner, "Write choice: ");
-            if (attackChoice < 0 || attackChoice >= player.getAttack().size()) {
+            if (attackChoice < 0 || attackChoice >= player.getAttacks().size()) {
                 System.out.println("* Invalid index *");
                 continue;
             }
-            return player.getAttack().get(attackChoice);
+            return player.getAttacks().get(attackChoice);
         }
     }
 
     private static void useAttack(Pokemon attacker, Attack attack, Pokemon target) {
-        if (random.nextInt(0, 101) > attack.getAccuracy()) {
+        if (random.nextInt(0, 100) > attack.getAccuracy()) {
             System.out.println(attacker.getName() + " uses " + attack.getName() + "... missed attack!");
             return;
         }//⚔️❤️
@@ -132,7 +130,7 @@ public class BattleEngine {
     }
 
 
-    private static Boolean notFainted(ArrayList<Pokemon> pokedex) {
+    private static boolean notFainted(ArrayList<Pokemon> pokedex) {
         if (pokedex.isEmpty()) {
             System.out.println("* No Pokémons exists in Pokédex *");
             return false;

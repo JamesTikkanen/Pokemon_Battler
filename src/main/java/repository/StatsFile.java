@@ -17,7 +17,7 @@ public class StatsFile {
     public static void saveStatsFile(List<Pokemon> pokedex) {
         ArrayList<Stats> list = new ArrayList<>();
         for (Pokemon p : pokedex) {
-            list.add(new Stats(p.getName(), p.getWins(), p.getLoss()));
+            list.add(new Stats(p.getName(), p.getWins(), p.getLosses()));
         }
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(statsPath.toFile(), list);
@@ -43,7 +43,7 @@ public class StatsFile {
             System.out.println("File loaded successfully");
 
         } catch (IOException e) {
-            System.out.println("*NOT POSSIBLE TO LOAD\n" + e.getMessage());
+            System.out.println("* Not possible to load \n" + e.getMessage());
         }
     }
 }

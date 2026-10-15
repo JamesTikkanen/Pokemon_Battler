@@ -8,9 +8,10 @@ public abstract class Attack {
 
     protected Attack(String name, int accuracy, Type type) {
         if (name == null || name.isBlank()) {
-            System.out.println("* Name can't be empty *");
-        }else if (accuracy <= 0 || accuracy > 100) {
-            System.out.println("* Accuracy can only be 1-100 *");
+            throw new IllegalArgumentException("* Name can't be empty *");
+        }
+        if (accuracy <= 0 || accuracy > 100) {
+            throw new IllegalArgumentException("* Accuracy can only be 1-100 *");
         }
         this.name = name;
         this.type = type;

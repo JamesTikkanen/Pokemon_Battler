@@ -6,10 +6,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputHelper {
-    private static int maxHp = 200;
-    private static int minHp = 0;
-    private static int maxAtt = 100;
-    private static int minAtt = 1;
+    private final static int maxHp = 200;
+    private final static int minHp = 1;
+    private final static int maxAtt = 100;
+    private final static int minAtt = 1;
 
     public static int readInt(Scanner scanner, String prompt) {
         while (true) {
@@ -36,11 +36,11 @@ public class InputHelper {
                 NameLengthException.nameCheckLength(input);
                 return input;
             } catch (InputMismatchException e) {
-                System.out.println("*INVALID INPUT\n");
+                System.out.println("* Invalid input *\n");
             } catch (EmptyNameException e) {
-                System.out.println("*INVALID! " + e.getMessage() + "\n");
+                System.out.println("* Invalid! " + e.getMessage() + "\n");
             } catch (NameLengthException e) {
-                System.out.println("*INVALID! " + e.getMessage() + "\n");
+                System.out.println("* Invalid! " + e.getMessage() + "\n");
             }
         }
     }
@@ -78,7 +78,7 @@ public class InputHelper {
             try {
                 int in = Integer.parseInt(input);
                 if (in < minAtt || in > maxAtt) {
-                    System.out.println("* HP must be 1-100 *");
+                    System.out.println("* Must be between 1-100 *");
                     continue;
                 }
                 return in;
@@ -94,7 +94,7 @@ public class InputHelper {
             System.out.print("Write type: ");
             try {
                 String input = scanner.nextLine().toUpperCase().trim();
-                if (input == null || input.isBlank()) {
+                if (input.isBlank()) {
                     System.out.println("* Can't leave empty *");
                     continue;
                 }

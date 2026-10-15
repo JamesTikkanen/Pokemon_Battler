@@ -7,12 +7,12 @@ public enum Type {
     ELECTRIC("Electric ⚡"),
     NORMAL("Normal ✊");
 
-    private final String lable;
+    private final String label;
 
-    Type(String lable){
-        this.lable = lable;
+    Type(String label){
+        this.label = label;
     }
     public String getLable(){
-        return lable;
+        return label;
     }
 }

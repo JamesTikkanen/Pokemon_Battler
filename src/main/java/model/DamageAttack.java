@@ -6,7 +6,7 @@ public class DamageAttack extends Attack {
     public DamageAttack(String name, int damage, int accuracy, Type type) {
         super(name, accuracy, type);
         if (damage <= 0 || damage > 100) {
-            System.out.println("* Damage can only be 1-100 *");
+            throw new IllegalArgumentException("* Damage can only be 1-100 *");
         }
         this.damage = damage;
     }

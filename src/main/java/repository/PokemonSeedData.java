@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class PokeData {
+public class PokemonSeedData {
     public static final ArrayList<Pokemon> pokeDataSeed() {
         ArrayList<Pokemon> pokeDataSeed = new ArrayList<>();
         //😺🦊🐸🐋🐹🐮

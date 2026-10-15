@@ -13,8 +13,8 @@ public class BattleMenu {
 
         while (true) {
             System.out.println("\n--------POKÉMON--------\n--------BATTLER--------\n");
-            System.out.println("[1] BATTLE WILD POKEMON");
-            System.out.println("[2] BATTLE POKÉDEX");
+            System.out.println("[1] BATTLE WILD POKÉMON");
+            System.out.println("[2] POKÉDEX BATTLE");
             System.out.println("[3] HEAL ALL POKÉMON");
             System.out.println("[4] EXIT POKÉMON BATTLER");
             int choice = InputHelper.readInt(scanner, "Write choice: ");
