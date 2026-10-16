@@ -128,7 +128,7 @@ VG-Krav
 Skada blir antingen 2x 1x eller 0.5x i effektivitet beroende på typ mot typ.
 
 -JSON har jag använt för att spara och ladda filer och jag delade upp Stats.json(vinst/förlust + namn) från Pokedex.json(pokedex)
-Dom sparas även lite annorlunda. Stats.json sparas direkt efter varje strid till ett namn och pokedex sparas om man själv 
+Dom sparas även lite annorlunda. Stats.json sparas direkt efter varje strid till ett namn och pokédex sparas om man själv 
 väljer spara eller om man avslutar via menyn.
 
 -Arv och polymorfism
