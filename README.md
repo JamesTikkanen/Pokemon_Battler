@@ -238,7 +238,8 @@ ansvarar för hur skadan sker/utförs.
 
 (Han ej göra 'Critical hit' pga tidsbrist. Blev verkligen klar sista dagen och måste göra en annan inlämning för 
 självledarskap som också lämnas in idag(fredag) som jag glömde bort. 
-JUnit 5 tester och interface missades också men kanske testar göra det senare.
+JUnit 5 tester och interface missades också men kanske testar göra det senare
+Känner även att jag måste lära mig Collection och min Encapsulations kan förbättras.
 
 Jag kommer att förbättra koden efter inlämningen för att förbättra mina kunskaper men det kommer göras i en annan branch 
 än mastern, om det går bra uppdaterar jag min master i framtiden.)
