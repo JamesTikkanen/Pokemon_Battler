@@ -5,7 +5,12 @@ import model.Type;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Klass för att säkra mot inkorrekt input från användare
+ * Hjälper mot int, string, typ och (hp, damage, accuracy).
+ */
 public class InputHelper {
+    //Fasta int värden för hjälpmetoderna
     private final static int maxHp = 200;
     private final static int minHp = 1;
     private final static int maxAtt = 100;
@@ -32,7 +37,7 @@ public class InputHelper {
             System.out.print(prompt);
             try {
                 String input = scanner.nextLine().trim();
-                EmptyNameException.noEmptyName(input);
+                EmptyNameException.noEmptyName(input);//Min två egna exceptions, en för tomt namn, andra för namn längd.
                 NameLengthException.nameCheckLength(input);
                 return input;
             } catch (InputMismatchException e) {

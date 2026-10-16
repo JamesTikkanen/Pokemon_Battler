@@ -1,5 +1,8 @@
 package model;
-//🔥💧🥬✊⚡
+
+/**
+ * Typ för pokemon eller attack
+ */
 public enum Type {
     FIRE("Fire \uD83D\uDD25"),
     WATER("Water \uD83D\uDCA7"),

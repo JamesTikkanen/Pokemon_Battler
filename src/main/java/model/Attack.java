@@ -6,6 +6,11 @@ public abstract class Attack {
     private final Type type;
     private final int accuracy;
 
+    /**
+     * Basklass
+     * Innehåller det alla attacker delar (namn, typ, accuracy)
+     * damage är i DamageAttack en subklass
+     */
     protected Attack(String name, int accuracy, Type type) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("* Name can't be empty *");
@@ -17,7 +22,7 @@ public abstract class Attack {
         this.type = type;
         this.accuracy = accuracy;
     }
-
+    //utför attack som DamageAttack override över
     public abstract void execute(Pokemon attacker, Pokemon target);
 
     public String getName() {
@@ -31,7 +36,7 @@ public abstract class Attack {
     public int getAccuracy() {
         return accuracy;
     }
-
+    //Text som visar attack
     @Override
     public String toString() {
         return name + " [" + type.getLable() + "] " + accuracy + ":acc";

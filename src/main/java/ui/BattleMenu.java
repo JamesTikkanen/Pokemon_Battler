@@ -10,7 +10,9 @@ import static utilities.Utilities.healPokemon;
 
 public class BattleMenu {
     public static void battleMenu() {
-
+/**
+ * Stridsmenyn med val för strider, läka eller återgå till huvudmeny.
+ */
         while (true) {
             System.out.println("\n--------POKÉMON--------\n--------BATTLER--------\n");
             System.out.println("[1] BATTLE WILD POKÉMON");
@@ -23,16 +25,16 @@ public class BattleMenu {
                 continue;
             }
             switch (choice) {
-                case 1 -> {//Slås mot en slumpvald vild pokemon
+                case 1 -> {//Slås mot en slumpvald vild pokemon från en pool av 6
                     wildBattle();
                 }
-                case 2 -> { //Slås mot en pokemon i pokedex
+                case 2 -> { //Slås mot en pokemon i sin egna pokedex
                     pokedexBattle();
                 }
-                case 3 -> {
+                case 3 -> { //Läker alla pokemons i pokedex
                     healPokemon(pokedex);
                 }
-                case 4 -> { //Kan ändra Namn, hp, type och ta bort eller lägga till model.Attack.
+                case 4 -> { //Återvänder till huvudmeny
                     System.out.println("Returning to Pokédex");
                     return;
                 }

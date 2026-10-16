@@ -10,6 +10,10 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Sparar och laddar Vinster/Förluster till en separat fil Stats.json
+ * namn vinster och förluster sparas
+ */
 public class StatsFile {
     private static final Path statsPath = Path.of("Stats.json");
     private static ObjectMapper mapper = new ObjectMapper();
@@ -26,6 +30,7 @@ public class StatsFile {
         }
     }
 
+    //Läser från Stats.json och för över till pokedex med namn.
     public static void loadStatsFile(List<Pokemon> pokedex) {
         if (!Files.exists(statsPath)) {
             System.out.println("* No stats file found *");

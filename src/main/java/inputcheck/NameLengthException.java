@@ -1,5 +1,8 @@
 package inputcheck;
 
+/**
+ * Exception mot namn över 20 karaktärer
+ */
 public class NameLengthException extends RuntimeException {
     public NameLengthException(String message) {
         super(message);

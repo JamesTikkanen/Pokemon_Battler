@@ -13,7 +13,7 @@ import static ui.Main.scanner;
 
 public class Utilities {
 
-    //Visar dom pokemons som finns i listan.
+    //Visar dom pokemons som finns i pokedex listan.
     public static void showPokeData(ArrayList<Pokemon> pokeData) {
         if (pokeData == null || pokeData.isEmpty()) {
             System.out.println("* Pokedex is empty *");
@@ -28,7 +28,7 @@ public class Utilities {
         }
     }
 
-    public static void addPokemon() {
+    public static void addPokemon() {//Metoden för att skapa en pokemon plus en attack
         System.out.println("\n---Add a Pokémon.--");
         String name = InputHelper.readString(scanner, "Write Pokémon name: ");
         Type type = InputHelper.readType(scanner);
@@ -43,7 +43,7 @@ public class Utilities {
         System.out.println("* Added a new pokemon *");
     }
 
-    public static Attack addAttack() {
+    public static Attack addAttack() {//lägger till en attack, används även i addPokemon()
         String name = InputHelper.readString(scanner, "Write attack name: ");
         Type type = InputHelper.readType(scanner);
         int damage = InputHelper.readIntDamAcc(scanner, "Write damage 1-100: ");
@@ -51,6 +51,7 @@ public class Utilities {
         return new DamageAttack(name, damage, accuracy, type);
     }
 
+    //Man väljer en pokemon att skapa attack till om det inte är mer 4.
     public static void addPokemonAttack(ArrayList<Pokemon> pokedex) {
         showPokeData(pokedex);
         System.out.println("Choose index of the pokemon to add an attack to");
@@ -70,6 +71,7 @@ public class Utilities {
         }
     }
 
+    //Söker efter pokemon med namn, finner dock bara de första om det är 2 med samma namn.
     public static void searchPokemon(ArrayList<Pokemon> pokedex) {
         String search = InputHelper.readString(scanner, "Enter name to search: ").toLowerCase();
         for (Pokemon p : pokedex) {
@@ -82,6 +84,7 @@ public class Utilities {
         System.out.println("No Pokémon found with the name: " + search);
     }
 
+    //tar bort en Pokemon från pokdex listan.
     public static void removePokemon(ArrayList<Pokemon> pokedex) {
         showPokeData(pokedex);
         if (pokedex.isEmpty()) return;
@@ -97,6 +100,7 @@ public class Utilities {
         }
     }
 
+    //Läker alla pokemons i pokedex
     public static void healPokemon(ArrayList<Pokemon> pokedex) {
         for (Pokemon p : pokedex) {
             p.heal(p.getMaxHp());

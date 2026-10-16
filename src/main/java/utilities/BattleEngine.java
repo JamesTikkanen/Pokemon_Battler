@@ -16,15 +16,19 @@ import static utilities.Utilities.showPokeData;
 public class BattleEngine {
     private static final Random random = new Random();
 
-    public static void wildBattle() {
+    /**
+     * Stridsmotorn som styr alla stridslogik
+     */
+
+    public static void wildBattle() { //Strid mot en slumpad vild pokemon.
         if(!notFainted(pokedex))return;
         Pokemon player = choosePokemon();
-        int wildRandom = random.nextInt(0, wildPokeData().size());
-        Pokemon enemy = wildPokeData().get(wildRandom);
+        int wildRandom = random.nextInt(0, wildPokeData().size()); //slumpar en fiende index
+        Pokemon enemy = wildPokeData().get(wildRandom); //Ger ut den vilda med samma index
         battle(player, enemy);
     }
 
-    public static void pokedexBattle() {
+    public static void pokedexBattle() { //Strid mot en pokemon i sin egna pokedex.
         if(!notFainted(pokedex))return;
         Pokemon player = choosePokemon();
         Pokemon enemy;
@@ -40,7 +44,7 @@ public class BattleEngine {
         battle(player, enemy);
     }
 
-    private static Pokemon choosePokemon() {
+    private static Pokemon choosePokemon() { //Visar pokedex som användare får välja mellan med undantag
         showPokeData(pokedex);
         Pokemon player;
         while (true) {
@@ -63,6 +67,11 @@ public class BattleEngine {
         return player;
     }
 
+    /**
+     * Själva striden som sker mellan spelare och fiende.
+     * Fortsätter till hp går till 0.
+     * Uppdaterar vinst/förlust statistiken efter varje strid
+     */
     private static void battle(Pokemon player, Pokemon enemy) {
         System.out.println("\n|---------------------|\n" + player.getName() + " VS " + enemy.getName() + "\n");
         boolean playerTurn = coinToss(player, enemy) == player;
@@ -99,7 +108,7 @@ public class BattleEngine {
         }
     }
 
-    private static Attack chooseAttack(Pokemon player) {
+    private static Attack chooseAttack(Pokemon player) { //Användaren får välja en attack
         System.out.println("Choose attack to use");
         int i = 0;
         for (Attack a : player.getAttacks()) {
@@ -116,21 +125,21 @@ public class BattleEngine {
         }
     }
 
-    private static void useAttack(Pokemon attacker, Attack attack, Pokemon target) {
-        if (random.nextInt(0, 100) > attack.getAccuracy()) {
+    private static void useAttack(Pokemon attacker, Attack attack, Pokemon target) {//Om attack träffar blir det skada
+        if (random.nextInt(0, 100) > attack.getAccuracy()) {//Om man har otur missar man
             System.out.println(attacker.getName() + " uses " + attack.getName() + "... missed attack!");
             return;
         }//⚔️❤️
         attack.execute(attacker, target);
     }
 
-    private static Pokemon coinToss(Pokemon player, Pokemon enemy) {
+    private static Pokemon coinToss(Pokemon player, Pokemon enemy) {//Början av alla strider slumpas det 50/50
         System.out.println("A coin toss to see who starts");
         return random.nextInt(0, 2) == 0 ? player : enemy;
     }
 
 
-    private static boolean notFainted(ArrayList<Pokemon> pokedex) {
+    private static boolean notFainted(ArrayList<Pokemon> pokedex) {//Kollar om det finns pokemon att strida med annars felmeddelande
         if (pokedex.isEmpty()) {
             System.out.println("* No Pokémons exists in Pokédex *");
             return false;

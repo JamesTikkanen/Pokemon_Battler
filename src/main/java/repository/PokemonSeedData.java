@@ -5,7 +5,10 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+/**
+ * Här finns all Seed Data för att återställa pokedex till original.
+ * Finns även alla vilda pokemons som man kan slåss mot
+ */
 public class PokemonSeedData {
     public static final ArrayList<Pokemon> pokeDataSeed() {
         ArrayList<Pokemon> pokeDataSeed = new ArrayList<>();

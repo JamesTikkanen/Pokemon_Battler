@@ -21,19 +21,24 @@ public class Main {
     public static Path pokedexPath = Path.of("Pokedex.json");
 
     public static void main(String[] args) {
-
+/**
+ * Main klass samt huvudmenyn (Pokédex meny)
+ * Håller alla val förutom avsluta i andra klasser.
+ */
+        //Kollar om pokedex.json fil existerar annars laddar seed data
         if (Files.exists(pokedexPath)) {
             pokedex = new ArrayList<>(loadFile(pokedexPath));
             if (pokedex.isEmpty()) {
                 System.out.println("* 'Pokedex.json' file is empty, seed data loaded *");
                 pokedex = pokeDataSeed();
             }
-        }else if (!Files.exists(pokedexPath)) {
+        } else if (!Files.exists(pokedexPath)) {
             System.out.println("* No 'Pokedex.json' file found, seed data loaded *");
             pokedex = pokeDataSeed();
         }
         loadStatsFile(pokedex);
 
+        //Visar meny val och läser val
         while (true) {
             System.out.println("\n---------------------\n-------POKÉDEX-------\n---------------------");
             System.out.println("[0] POKEMON BATTLER");
@@ -56,10 +61,10 @@ public class Main {
                 break;
             }
             switch (input) {
-                case 0 -> {//meny val för pokemon battler
+                case 0 -> {//går till menyval för pokemon battler
                     BattleMenu.battleMenu();
                 }
-                case 1 -> { //Om pokeList är tom går till menyval annars visas pokedex
+                case 1 -> { //Visar Pokédex, om pokeList är tom skriver ut meddelande och återvänder.
                     showPokeData(pokedex);
                 }
                 case 2 -> { //Lägger till pokemon + en attack till pokedex.

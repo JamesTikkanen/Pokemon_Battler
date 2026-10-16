@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Klass för statistiken för en pokemon
+ * Vinster / Förluster
+ * Behövs för json fil
+ */
 public class Stats {
     private String name;
     private int wins;

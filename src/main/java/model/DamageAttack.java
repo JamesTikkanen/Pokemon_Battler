@@ -3,6 +3,9 @@ package model;
 public class DamageAttack extends Attack {
     private final int damage;
 
+    /**
+     * Denna klass är de som gör skada
+     */
     public DamageAttack(String name, int damage, int accuracy, Type type) {
         super(name, accuracy, type);
         if (damage <= 0 || damage > 100) {
@@ -14,7 +17,7 @@ public class DamageAttack extends Attack {
     public int getDamage() {
         return damage;
     }
-
+    //Påverkar effektiviteten på skadan
     public static double getTypeMultiplier(Type atk, Type def) {
         if (atk == Type.FIRE && def == Type.GRASS) return 2.0;
         if (atk == Type.WATER && def == Type.FIRE) return 2.0;
@@ -28,7 +31,7 @@ public class DamageAttack extends Attack {
 
         return 1.0;
     }
-
+    //Går över execute i Attack klassen och gör själva skadan mot hp
     @Override
     public void execute(Pokemon attacker, Pokemon target) {
         double mult = getTypeMultiplier(getType(), target.getType());
@@ -43,7 +46,7 @@ public class DamageAttack extends Attack {
         else if(mult<1) System.out.println("It's not effective... 0.5x damage! ");
         System.out.println(target.getName() + " takes damage: " + oldHp + " hp -> " + target.getCurrentHp() + " hp");
     }
-
+    //Text för attack
     @Override
     public String toString(){
         return getName() + " [" + getType().getLable() + "] " + damage + ":dmg " + getAccuracy() + ":acc";

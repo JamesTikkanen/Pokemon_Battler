@@ -11,7 +11,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Spara och laddar pokemons till/från json fil.
+ */
 public class FileHandler {
+
+    //Sparar pokedex till json fil
     public static void saveFile(Path path, List<Pokemon> pokedex) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<PokemonData> pokemonDataList = new ArrayList<>();
@@ -26,6 +31,7 @@ public class FileHandler {
         }
     }
 
+    //Laddar fån json fil till pokedex
     public static List<Pokemon> loadFile(Path path) {
         ObjectMapper mapper = new ObjectMapper();
         if (!Files.exists(path)) {
@@ -34,18 +40,19 @@ public class FileHandler {
         }
         try {
             PokemonData[] data = mapper.readValue(path.toFile(), PokemonData[].class);
-            ArrayList<Pokemon> result = new ArrayList<>();
+            ArrayList<Pokemon> pokeList = new ArrayList<>();
             for (PokemonData pd : data) {
-                result.add(fromData(pd));
+                pokeList.add(fromData(pd));
             }
             System.out.println("* File loaded *");
-            return result;
+            return pokeList;
         } catch (IOException e) {
             System.out.println("* Not possible to load file *\n" + e.getMessage() + " *");
             return new ArrayList<>();
         }
     }
 
+    //För över data från Klass Pokemon till Klass PokemonData för att spara till json fil.
     private static PokemonData toData(Pokemon p) {
         PokemonData pd = new PokemonData();
         pd.setName(p.getName());
@@ -66,6 +73,7 @@ public class FileHandler {
         return pd;
     }
 
+    //För över pokemon från json fil till en pokemen med Pokemon
     private static Pokemon fromData(PokemonData pd) {
         Pokemon p = new Pokemon(pd.getName(), pd.getType(), pd.getMaxHp(), pd.getCurrentHp());
         for (AttackData ad : pd.getAttacks()){

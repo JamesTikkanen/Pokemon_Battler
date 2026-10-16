@@ -14,6 +14,11 @@ public class Pokemon {
     public Pokemon() {
     }
 
+    /**
+     * Är en struktur för pokemon(namn, typ, hp, attacker)
+     * Vinster och förluster också
+     */
+    //Validerar värden när man skapar
     public Pokemon(String name, Type type, int maxHp, int currentHp) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("* Name can't be empty *");
@@ -49,6 +54,7 @@ public class Pokemon {
         return currentHp;
     }
 
+    //Håller hp mellan 0-maxHp
     public void setCurrentHp(int hp) {
         if (hp < 0) currentHp = 0;
         else if (hp > maxHp) currentHp = maxHp;
@@ -60,6 +66,7 @@ public class Pokemon {
         return attacks;
     }
 
+    //Lägger till attack och skapar inga fler efter 4
     public void addAttack(Attack attack) {
         if (attacks.size() >= 4) {
             System.out.println("* Can't be more than 4 attacks *");
@@ -68,6 +75,7 @@ public class Pokemon {
         this.attacks.add(attack);
     }
 
+    //Gör hp till minst 0
     public void takeDamage(int amount) {
         if (amount < 0) {
             System.out.println("* Can't be less than 0 *");
@@ -76,6 +84,7 @@ public class Pokemon {
         this.currentHp = Math.max(0, this.currentHp - amount);
     }
 
+    //Hp går aldrig över maxHp
     public void heal(int amount) {
         if (amount < 0) {
             System.out.println("* Can't be less than 0 *");
@@ -113,7 +122,7 @@ public class Pokemon {
         this.loss = loss;
     }
 
-
+    //Texten som skrivs ut när man visar pokedex
     @Override
     public String toString() {
         return name + " [" + type.getLable() + "] " + currentHp + "/" + maxHp + ":❤\uFE0F" +
