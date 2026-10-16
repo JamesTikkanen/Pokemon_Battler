@@ -9,22 +9,39 @@ Man kan även läka alla sina pokémons in denna menyval.
 
 ---Pokédex Menu--- 
 0 - Pokémon Battler
+
     - En egen meny för strider.
+
     0.1 - Wild Pokémon Battle 
+
         - Strid mot en slumpad vald pokémon från en lista av 6 unika varelser.
+
     0.2 - Pokédex Battle
+
         - Strid mellan två pokémons i sin egna pokédex so man själv väljer.
+
     0.3 - Heal All Pokèmon
+
         - Läker alla pokémons till full hälsa.
+
     0.4 - Exit Battler Menu
+
         - Återgår till pokédex menyval
+
     (Extra info)
+
     - Strider mellan pokémons slumpas i början av varje strid med ett 'Coin Toss' så det är en 50/50 chans vem det är som startar striden.
+
     - När en pokémon som man strider med tar skada i en strid återstår samma hälsa till nästa match om man inte läker sig i Battle Meny.
+
     - Efter varje strid sparas vinst och förlust för sina pokémons i en 'Stats.json' fil.
+
     - Man kan ej strida med en pokémon med noll hälsa eller noll attacker.
+
     - I strider är det en 2 sekunder vänta mellan varje attack för att det ska vara lättare att följa med stridens gång.
+
     - När man väljer att läka så läks alla pokémons inte en enskild.
+
 
 1 - Show Pokémon
     - Visar alla pokémons i sin pokédex.
