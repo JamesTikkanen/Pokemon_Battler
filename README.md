@@ -7,7 +7,7 @@ Programmet är uppbyggt i två meny val. Den första är pokédex där man kan s
 Den andra är själva battlern där man strider med sina egna mot antingen en annan av sin egen eller mot en vild pokémon.
 Man kan även läka alla sina pokémons in denna menyval.
 
----Pokédex Menu---
+---Pokédex Menu--- 
 0 - Pokémon Battler
     - En egen meny för strider.
     0.1 - Wild Pokémon Battle 
