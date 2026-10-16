@@ -229,9 +229,9 @@ Dom sparas även lite annorlunda. Stats.json sparas direkt efter varje strid til
 väljer spara eller om man avslutar via menyn.
 
 
--Arv och polymorfism
+-Arv har jag använt med DamageAttack som ärver från Attack. För att attack har den samlade info om attacken medans DamageAttack 
+ansvarar för hur skadan sker/utförs.
 
-Arv har jag använt med DamageAttack som ärver från Attack.
 
-Polymorfism användes när DamageAttack skriver över metod execute() för att utföra sin egna metod.
+-Polymorfism användes när DamageAttack '@Override' metoden execute() som finns i Attack för att utföra sin egna metod.
 
