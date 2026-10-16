@@ -40,7 +40,7 @@ public class DamageAttack extends Attack {
 
         System.out.println(attacker.getName() + " uses " + getName() + " [" + damage + " dmg] on " + target.getName());
         if(mult>1) System.out.println("It's super effective! 2x damage! ");
-        else if(mult<1) System.out.println("It's not effective...");
+        else if(mult<1) System.out.println("It's not effective... 0.5x damage! ");
         System.out.println(target.getName() + " takes damage: " + oldHp + " hp -> " + target.getCurrentHp() + " hp");
     }
 
