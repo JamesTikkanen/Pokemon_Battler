@@ -31,15 +31,18 @@ Man kan även läka alla sina pokémons in denna menyval.
 
     (Extra info)
 
-    - Strider mellan pokémons slumpas i början av varje strid med ett 'Coin Toss' så det är en 50/50 chans vem det är som startar striden.
+    - Strider mellan pokémons slumpas i början av varje strid med ett 'Coin Toss' så det är en 50/50 chans
+vem det är som startar striden.
 
-    - När en pokémon som man strider med tar skada i en strid återstår samma hälsa till nästa match om man inte läker sig i Battle Meny.
+    - När en pokémon som man strider med tar skada i en strid återstår samma hälsa till nästa match om man
+inte läker sig i Battle Meny.
 
     - Efter varje strid sparas vinst och förlust för sina pokémons i en 'Stats.json' fil.
 
     - Man kan ej strida med en pokémon med noll hälsa eller noll attacker.
 
-    - I strider är det en 2 sekunder vänta mellan varje attack för att det ska vara lättare att följa med stridens gång.
+    - I strider är det en 2 sekunder vänta mellan varje attack för att det ska vara lättare att följa med 
+stridens gång.
 
     - När man väljer att läka så läks alla pokémons inte en enskild.
 
@@ -202,8 +205,8 @@ PokemonSeedData är för att ladda om pokédex till original och där har jag ä
 
 StatsFile är för att spara och ladda vinster och förluster till specifika pokémons.
 
-FileHandler är för att spara pokémons till en json fil och ladda från. Använder sig utav klasserna AttackData och PokemonData
-för att spara då det inte gick med dom klasserna i model.
+FileHandler är för att spara pokémons till en json fil och ladda från. Använder sig utav klasserna 
+AttackData och PokemonData för att spara då det inte gick med dom klasserna i model.
 
 
 -Mappen 'ui'
