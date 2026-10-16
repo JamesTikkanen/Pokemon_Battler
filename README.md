@@ -97,7 +97,7 @@ Man kan även läka alla sina pokémons in denna menyval.
 
 -------------------------------------------------------------------------
 
-Jag använt OOP, arv, polymorfism, json.
+Jag har använt OOP, arv, polymorfism, json.
 
 -Mappen 'inputcheck' 
 Har jag lagt mina Exceptions klasser som jag också använde i förra uppgiften
@@ -128,7 +128,7 @@ VG-Krav
 Skada blir antingen 2x 1x eller 0.5x i effektivitet beroende på typ mot typ.
 
 -JSON har jag använt för att spara och ladda filer och jag delade upp Stats.json(vinst/förlust + namn) från Pokedex.json(pokedex)
-Dom sparas även lite annorlunda. v/f sparas direkt efter varje strid till ett namn och pokedex sparas om man själv 
+Dom sparas även lite annorlunda. Stats.json sparas direkt efter varje strid till ett namn och pokedex sparas om man själv 
 väljer spara eller om man avslutar via menyn.
 
 -Arv och polymorfism
